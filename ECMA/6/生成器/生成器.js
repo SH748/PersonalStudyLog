@@ -11,9 +11,10 @@
         console.log("stop2", stop5)
     }
 
-    let iterator = gen("开始执行");
-    let r1 = iterator.next();
+    let iterator = gen();
+    let r1 = iterator.next("开始执行");
     console.log(r1)
     let r2 = iterator.next("离开stop2")
     console.log(r2)
+
 })()

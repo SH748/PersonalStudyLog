@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: lightslategray;
+    }
+    .box{
+        width: 200px;
+        height: 200px;
+        /* border: lightblue solid 5px; */
+        /* transform: rotate(45deg); */
+        position: relative;
+        animation:act 9s 0.01s linear infinite;
+        z-index: 2;
+    }
+    .box div{
+        width: 100px;
+        height: 100px;
+        /* background-color: lightblue; */
+        position: absolute;
+        
+    }
+    
+    .box div:nth-child(1){
+        top: 0;
+        left: 0;
+    }
+    .box div:nth-child(1) div{
+        background-color: lightgreen;
+    }
+    .box div:nth-child(2) div{
+        background-color: lightcoral;
+    }
+    .box div:nth-child(3) div{
+        background-color: lightsalmon;
+    }
+    .box div:nth-child(4) div{
+        background-color: lightsteelblue;
+    }
+    
+    .box div:nth-child(2){
+        top: 0;
+        right: 0;
+    }
+    .box div div:nth-child(1){
+        border-bottom-left-radius: 100%;
+    }
+    .box div div:nth-child(2){
+        border-bottom-right-radius: 100%;
+    }
+    .box div:nth-child(3){
+        bottom: 0;
+        left: 0;
+    }
+    .box div:nth-child(4){
+        bottom: 0;
+        right: 0;
+    }
+    .box div div{
+        width: 50px;
+        height: 50px;
+    }
+    @keyframes act{
+       0%{
+        transform: rotate(0);
+       }
+       50%{
+           /* width: 250px;
+           height: 250px; */
+       }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .flag{
+        width: 8px;
+        height: 300px;
+        background-color: lightsteelblue;
+        position: relative;
+        bottom: -150px;
+        left: -100px;
+        z-index: 1;
+    }
+</style>
+<body>
+    <div class="box">
+        <div style="transform: rotate(90deg);">
+            <div></div>
+            <div></div>
+        </div>
+        <div style="transform: rotate(180deg);">
+            <div></div>
+            <div></div>
+        </div>
+        <div >
+            <div></div>
+            <div></div>
+        </div>
+        <div style="transform: rotate(270deg);">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="flag"></div>
+</body>
+</html>

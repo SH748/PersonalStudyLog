@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: lightblue;
+            color: white;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+        .box{
+            /* height: 200px; */
+            display: table-cell; 
+        }
+        .box div{
+            float: left;
+            width: 30px;
+            text-align: center;
+            margin-left: 10px;
+            /* border-radius: 10px; */
+            min-height: 100px;
+            position: relative;
+            margin: auto 0 auto 10px;
+            /* background-color: tomato; */
+        }
+        .box div span{
+            display: block;
+            position: absolute;
+            top: 35px;
+            left: 0;
+            background-color: lightcoral;
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .box div::before{
+            content: "";
+            display: block;
+            height: 40px;
+            width: 30px;
+            background-color: lightcoral;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            /* animation: first 6s 0.01ms linear infinite; */
+        }
+        .box div::after{
+            content: "";
+            display: block;
+            height: 40px;
+            width: 30px;
+            background-color: lightcoral;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            z-index: 1;
+            /* animation: first 6s 0.01ms linear infinite; */
+        }
+        @keyframes first{
+            0%{
+                height: 40px;
+            }
+            50%{
+                height:15px;
+            }
+            
+            100%{
+                height: 40px;
+            }
+        }
+        .l::after,.l::before{
+            animation: first 6s 0s linear infinite;
+        }
+        .o::after,.o::before{
+            animation: first 6s 1s linear infinite;
+        }
+        .a::after,.a::before{
+            animation: first 6s 2s linear infinite;
+        }
+        .d::after,.d::before{
+            animation: first 6s 3s linear infinite;
+        }
+        .i::after,.i::before{
+            animation: first 6s 4s linear infinite;
+        }
+        .n::after,.n::before{
+            animation: first 6s 5s linear infinite;
+        }
+        .g::after,.g::before{
+            animation: first 6s 6s linear infinite;
+        }
+</style>
+</head>
+<body>
+    <!--
+        div>div span div
+        上下两个DIV可以用伪元素代替
+        通过定位 上元素以下角定位，上元素通过上角定位
+        span固定在div盒子的中间
+    -->
+    <div class="box">
+        <div class="l"><span>L</span></div>
+        <div class="o"><span>O</span></div>
+        <div class="a"><span>A</span></div>
+        <div class="d"><span>D</span></div>
+        <div class="i"><span>I</span></div>
+        <div class="n"><span>N</span></div>
+        <div class="g"><span>G</span></div>
+    </div>
+</body>
+</html>
