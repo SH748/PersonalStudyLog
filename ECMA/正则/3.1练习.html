@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边界练习</title>
+</head>
+
+<body>
+
+    <input type="text" name="txt">
+    <script>
+        //限定input的输入的字符长度为3-6位的字母
+        window.onload = function () {
+            let input = document.querySelector("[name='txt']");
+            input.addEventListener("keyup", function () {
+                // console.log(this.value.match(/[a-z]{3,6}/));
+                console.log(this.value.match(/^[a-z]{3,6}$/i));
+
+                /**
+                 * 方案1没有限定边界，匹配规则实质为：目标字符串内有3-6位的连续的字母
+                 * 因此要限定边界
+                */
+            })
+        }
+
+    </script>
+</body>
+
+</html>

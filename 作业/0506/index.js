@@ -13,7 +13,13 @@ require("http").createServer((res, rep) => {
                 rep.end();
             })
         } else {
-            rep.setHeader("content-type", "text/css; charset=UTF-8");
+            if (/.css/g.test(url.pathname)) {
+                rep.setHeader("content-type", "text/css; charset=UTF-8");
+            }
+            if (/.js/.test(url.pathname)) {
+                rep.setHeader("content-type", "application/javascript; charset=UTF-8");
+            }
+            // rep.setHeader("content-type", "text/css; charset=UTF-8");
             let filePath = __dirname + "/public/" + url.pathname;
             if (fs.existsSync(filePath)) {
                 fs.readFile(filePath, (error, data) => {

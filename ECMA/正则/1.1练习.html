@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则练习-搜索字符高亮显示</title>
+</head>
+
+<body>
+    <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi est sit ducimus doloribus ut magni, quaerat eius,
+        repudiandae a unde vitae dolores nulla minima voluptas corrupti consectetur maiores facilis expedita?
+    </div>
+    <script>
+        window.onload = function () {
+            let input = prompt("请输入需要查找的内容，支持正则");
+            let reg = new RegExp(input, "g");
+            let content = document.querySelector(".content");
+            content.innerHTML = content.innerHTML.replace(reg, search => {
+                return `<span style="color:red">${search}</span>`;
+            })
+            console.log(content.innerHTML)
+        }
+    </script>
+</body>
+
+</html>
