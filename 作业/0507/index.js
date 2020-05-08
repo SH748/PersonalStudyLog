@@ -1,5 +1,23 @@
 const uTools = require("url");
 const fs = require("fs");
+const ejs = require("ejs");
+const arr = [{
+        name: "刘亦菲",
+        age: 18,
+    },
+    {
+        name: "杨超越",
+        age: 18,
+    },
+    {
+        name: "斋藤飞鸟",
+        age: 18,
+    },
+    {
+        name: "斋藤飞鸟",
+        age: 18,
+    }
+];
 require("http").createServer((res, rep) => {
     let method = res.method;
     let url = uTools.parse(res.url);
@@ -17,7 +35,10 @@ require("http").createServer((res, rep) => {
                 文件读取，不做文件存在验证，如果inde.html都没了，还写个鸡儿
                 */
                 rep.setHeader("content-type", "text/html; charset=UTF-8"); //设置响应类型
-                rep.write(data);
+                let html = ejs.render(data.toString(), {
+                    arr: arr
+                });
+                rep.write(html);
                 rep.end();
             })
         } else {
@@ -44,7 +65,5 @@ require("http").createServer((res, rep) => {
             }
         }
     }
-    // rep.statusCode(404);
-    // rep.end();
 
 }).listen(8000);
