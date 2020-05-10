@@ -1,0 +1,1 @@
+module.exports = "将数据对象暴露，require就可以获取到";
