@@ -107,7 +107,7 @@ class Server {
 
             let url = uTools.parse(res.url, true);
             // 请求路径
-            let pathName = url.pathname;
+            let pathName = decodeURI(url.pathname);
             // 根目录
             let root = defaultConfig.root;
 
