@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三级联动</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>城市三级联动</h1>
+        <hr>
+        <div class="row">
+            <div class="col-xs-4">
+                <select class="form-control province">
+                    <option>请选择省</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <select class="form-control city">
+                    <option>请选择市</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <select class="form-control district">
+                    <option>请选择区</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            init();
+            function init() {
+                $.post("/init", function (data) {
+                    inner($(".province"), data.province);
+                    inner($(".city"), data.city);
+                    inner($(".district"), data.district);
+
+                })
+            }
+            function inner(obj, arr) {
+                obj.children().eq(0).siblings().remove();
+                arr.forEach(element => {
+                    obj.append(`<option>${element}</option>`)
+                });
+            }
+            $(".province").on("change", function () {
+                $.post("/getcities", { "province": $(this).val() }, function (data) {
+                    inner($(".city"), data.city);
+                })
+            })
+            $(".city").on("change", function () {
+                $.post("/getdistrict", { "province": $(".province").val(), "city": $(this).val() }, function (data) {
+                    inner($(".district"), data.district);
+                })
+            })
+        }
+
+    </script>
+</body>
+
+</html>

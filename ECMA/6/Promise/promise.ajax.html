@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project-Ajax</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+        window.onload = function () {
+            let btn = document.querySelector("button");
+            btn.onclick = function () {
+                promiseAjax("get", "https://www.baidu.com").then((value) => {
+                    console.log(value);
+
+                }, (reson) => {
+                    console.log(reson);
+
+                })
+            }
+
+            function promiseAjax(method, url, data) {
+                return new Promise((resolve, reject) => {
+                    let xhr = new XMLHttpRequest;
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status >= 200 && xhr.status < 300) {
+                                // resolve(JSON.parse(xhr.responseText))
+                                resolve("成功")
+                            } else {
+                                reject(xhr.status)
+                                reject("失败")
+                            }
+                        }
+                    }
+                    xhr.open(method, url)
+                    xhr.send();
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>

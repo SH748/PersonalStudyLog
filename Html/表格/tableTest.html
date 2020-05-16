@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table表格练习</title>
+    <style>
+        table {}
+
+        th,
+        td {
+            width: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="1">
+        <caption>我的标题</caption>
+        <thead>
+            <tr>
+                <th> # </th>
+                <th> 姓 名 </th>
+                <th> 年 纪 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>飞鸟</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>飞鸟</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>飞鸟</td>
+                <td>18</td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>foot1</td>
+                <td>foot2</td>
+                <td>foot3</td>
+            </tr>
+        </tfoot>
+    </table>
+    <table border="1">
+        <caption>我的标题</caption>
+        <thead>
+            <tr>
+                <th> # </th>
+                <th> 姓 名 </th>
+                <th> 年 纪 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td rowspan="2">3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>

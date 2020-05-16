@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form学习</title>
+</head>
+
+<body>
+    <form style="min-width: 300px;max-width: 500px;">
+        <fieldset>
+            <legend>描述</legend>
+            <label>
+                用户名 <input type="text" name="userName" placeholder="用户名">
+            </label>
+            <hr>
+            <label>
+                密&nbsp;&nbsp;&nbsp;码 <input type="text" name="password" placeholder="密码">
+            </label>
+        </fieldset>
+        <button type="submit">登录</button>
+        <fieldset>
+            <legend>默认日历</legend>
+            默认<input type="date" />
+            <!--1min和max 限定日期可选范围-->
+            <hr>
+            min和max<input type="date" mint="2001-1-1" max="2022-1-1" />
+            <hr>
+            <!--固定距离可选-->
+            step<input type="date" step="5" />
+            <hr>
+            <!--type的其他-->
+            <!-- datetime<input type="datetime" /> -->
+            <hr>
+            week<input type="week" />
+            <hr>
+            month<input type="month" />
+            <hr>
+            time<input type="time" />
+            <hr>
+            datetime-local<input type="datetime-local" />
+        </fieldset>
+
+        <fieldset>
+            <legend>datelist</legend>
+            <input type="search" list="a" />
+            <datalist id="a">
+                <option value="a"></option>
+                <option value="b"></option>
+                <option value="c"></option>
+                <option value="d"></option>
+            </datalist>
+        </fieldset>
+
+
+    </form>
+    <hr>
+    <form action="target.html" method="GET" style="max-width: 300px;">
+        <fieldset>
+            <legend>下拉框多选问题</legend>
+            <select name="catrgory" multiple style="width: 80px;text-align: center;">
+                <option value="news">新闻</option>
+                <option value="game">游戏</option>
+                <option value="news">新闻</option>
+                <option value="game">游戏</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>optgroup分组</legend>
+            <select name="catrgory">
+                <optgroup label="前端">
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                </optgroup>
+                <optgroup label="后端">
+                    <option value="html">JAVA</option>
+                    <option value="c#">C#
+                    <option>
+                </optgroup>
+            </select>
+        </fieldset>
+        <button type="submit">提交</button>
+    </form>
+    <form action="" method="GET">
+        <fieldset>
+            <legend>autocomplete:输入过的历史提示</legend>
+            关闭<input type="text" name="off" autocomplete="off" />
+            开启<input type="text" name="on" />
+            <p style="color: red;">必须要有name属性才可以记录输入历史</p>
+        </fieldset>
+        <button>提交</button>
+    </form>
+</body>
+
+</html>

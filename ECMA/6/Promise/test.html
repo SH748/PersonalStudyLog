@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            console.log('1');
+
+            reject("失败数据0")
+        })
+
+        let result = p.then(value => {
+            console.log('2');
+
+            return new Promise((resolve, reject) => {
+                console.log('3');
+                reject("失败数据1")
+            })
+        }, reason => {
+
+            console.log('4');
+            throw new Error(1)
+        })
+        console.log(result);
+
+    </script>
+</body>
+
+</html>

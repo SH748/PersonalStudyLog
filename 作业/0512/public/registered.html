@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" />
+    <title>注册</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: url("/images/back.jpg");
+        }
+
+        .form {
+            width: 350px;
+            margin: 0 auto;
+            margin-top: -50px;
+            padding: 60px 50px;
+            background-color: rgba(100, 100, 100, .5);
+            border-radius: 15px;
+            border-color: red;
+        }
+
+        .form div {
+            margin-top: 10px;
+            color: white;
+        }
+
+        input {
+            color: white !important;
+            background-color: transparent !important;
+        }
+
+        #btn {
+            width: 100%;
+            outline: none;
+            filter: chroma(color=#fff);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">User Name</label>
+                <input type="text" name='userName' class="form-control" id="exampleInputEmail1" placeholder="User Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" minlength="6" maxlength="12" id="exampleInputPassword1"
+                    placeholder="Password">
+            </div>
+
+            <button type="submit" id="btn" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+
+    <script>
+
+        window.onload = function () {
+            let target = document.querySelector("input[name='userName']");
+            let password = document.querySelector("input[type='password']");
+            let sum = document.querySelector("#btn");
+            let name = false;
+            target.oninput = function () {
+                let content = this.value;
+                if (content) {
+                    let xhr = new XMLHttpRequest;
+                    xhr.onreadystatechange = () => {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200) {
+                                let result = JSON.parse(xhr.responseText);
+                                if (result.bo) {
+                                    this.parentNode.classList.remove("has-error");
+                                    this.parentNode.classList.add("has-success");
+                                    sum.disabled = false;
+                                    name = true;
+                                } else {
+                                    this.parentNode.classList.remove("has-success")
+                                    this.parentNode.classList.add("has-error");
+                                    sum.disabled = true;
+                                    name = false;
+                                }
+                            }
+                        }
+                    }
+                    xhr.open("post", "/checkName");
+                    xhr.send(JSON.stringify({
+                        inputName: content
+                    }));
+                }
+            }
+            sum.onclick = function () {
+                let pwd = password.value;
+                if (name && pwd.length >= 6) {
+                    alert("成功")
+                } else if (pwd.length < 6) {
+                    alert("密码必须6-12位")
+                } else if (!target.value) {
+                    alert("请输入用户名")
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

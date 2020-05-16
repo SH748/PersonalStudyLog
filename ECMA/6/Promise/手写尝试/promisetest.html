@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="./promisetest.js"></script> -->
+    <script>
+        console.dir(Promise);
+        let p = new Promise((resolve, reject) => {
+            // resolve("成功");
+            setTimeout(function () {
+                reject("失败")
+            }, 2000 * 5)
+        });
+        let keys = Reflect.ownKeys(p);
+        console.log(p);
+
+
+        p.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason);
+        })
+        setTimeout(() => {
+            console.log(p);
+        }, 15 * 1000)
+
+    </script>
+</body>
+
+</html>

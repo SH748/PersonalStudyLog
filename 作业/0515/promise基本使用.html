@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise基本使用</title>
+</head>
+
+<body>
+    <script>
+
+        //声明
+        let promise = new Promise((resolve, reject) => {
+            let n = Math.ceil(Math.random() * 10)
+            if (n % 2 === 0) {
+                resolve(n);
+            } else {
+                reject(n);
+            }
+        });
+        promise.then(value => {
+            console.log('偶数：' + value);
+
+        }, reason => {
+            console.log('奇数：' + reason);
+
+        })
+
+    </script>
+</body>
+
+</html>
