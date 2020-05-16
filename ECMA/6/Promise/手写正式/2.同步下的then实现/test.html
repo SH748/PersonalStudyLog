@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.实现newPromise</title>
+</head>
+
+<body>
+    <script src="./MinePromise.js"></script>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            // resolve("成功");
+            reject("失败");
+        });
+        p.then(value => {
+            console.log("then=>resolve", value);
+            // throw new Error("then=>resolve=>error");
+            console.log("then=>resolve=>afterError");
+
+        }, reason => {
+            console.log("then=>reject", reason);
+            throw new Error("then=>reject=>error");
+            console.log("then=>reject=>afterError");
+
+        })
+        console.log(p);
+    </script>
+</body>
+
+</html>

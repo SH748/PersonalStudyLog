@@ -18,37 +18,62 @@ class Promise {
     then(onFulfilled, onRejected) {
         if (typeof onFulfilled !== "function") onFulfilled = () => {};
         if (typeof onRejected !== "function") onRejected = () => {};
-        if (this.status === Promise.PENDING) {
-            Promise.callback.push({
-                onFulfilled,
-                onRejected
-            })
-        }
-        if (this.status === Promise.FULFILLED) {
-            onFulfilled(this.value);
-        }
-        if (this.status === Promise.REJECTED) {
-            onRejected(this.value);
-        }
+        return new Promise((resolve, reject) => {
+            let util = (fun) => {
+                try {
+                    let result = fun(this.value);
+                    if (result instanceof Promise) {
+                        result.then(value => {
+                            resolve(result.value)
+                        }, reason => {
+                            reject(result.value)
+                        })
+                    } else {
+                        resolve(result);
+                    }
+                } catch (error) {
+                    reject(error)
+                }
+            }
+            if (this.status === Promise.PENDING) {
+                Promise.callback.push({
+                    "onFulfilled": () => {
+                        util(onFulfilled)
+                    },
+                    "onRejected": () => {
+                        util(onRejected)
+                    }
+                })
+
+
+            }
+            if (this.status === Promise.FULFILLED) {
+                util(onFulfilled)
+            }
+            if (this.status === Promise.REJECTED) {
+                util(onRejected)
+            }
+        })
     }
     static reject = function (reason) {
+
         if (this.status == Promise.PENDING) {
             this.status = Promise.REJECTED;
             this.value = reason;
 
-            Promise.callback.map(callback => {
-                console.log(callback);
-                callback.onRejected(reason);
+            Promise.callback.forEach(callback => {
+                callback.onRejected.apply(this, [reason]);
             })
         }
     }
     static resolve = function (value) {
         if (this.status == Promise.PENDING) {
-            this.status = Promise.REJECTED;
+            this.status = Promise.FULFILLED;
             this.value = value;
-            Promise.callback.map(callback => {
-                callback.onFulfilled(reason);
+            Promise.callback.forEach(callback => {
+                callback.onFulfilled.apply(this, [value]);
             })
         }
     }
+
 }
