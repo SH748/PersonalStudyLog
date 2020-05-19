@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>原生Promise</title>
+    <title>1.实现newPromise</title>
 </head>
 
 <body>
+    <script src="./MinePromise.js"></script>
     <script>
         let p = new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -15,8 +16,15 @@
                 reject("失败");
             }, 1000)
         })
-        let result = p.then().then(v => { }, r => {
-            console.log('2', r);
+        let result = p.then(v => {
+
+        }, r => {
+            console.log('r:', r);
+            return new Promise((r1, r2) => {
+                r1(5);
+            })
+        }).then(v => {
+            console.log("su:", v);
 
         });
         console.log(result);

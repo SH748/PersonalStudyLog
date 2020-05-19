@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function call(url) {
+            return new Promise((r1, r2) => {
+                let x = new XMLHttpRequest;
+                x.onreadystatechange = function () {
+                    if (x.readyState == 4) {
+                        if (x.status >= 200 && x.status < 300) {
+                            r1(x.responseText)
+                        } else {
+                            r2(x.status)
+                        }
+                    }
+                }
+                x.open("get", url);
+                x.send();
+            })
+        }
+
+        async function fun() {
+            try {
+                let result = await call("https://www.tianqiapi.com/api/?version=v1&appid=23941491&appsecret=TXoD5e8P");
+                let data = JSON.parse(result);
+                console.log(data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        fun();
+    </script>
+</body>
+
+</html>

@@ -97,39 +97,85 @@ class Promise {
         /**
          * 思路：当 then 传入的 onFulfilled 和 onRejected 不是 Function 类型时，把其转为一个空类型，以便后续代码执行时不报错
          */
-        if (!(onFulfilled instanceof Function)) onFulfilled = () => {}
-        if (!(onRejected instanceof Function)) onRejected = () => {}
-
-        /**
-         *  在实例的 status 为 pending 时，then 被调用，说明 执行器中执行的是异步代码， 实例的 status 将在 then 方
-         * 法执行之后修改
-         *  为了触发 onFulfilled 和 onRejected ,考虑将 onFulfille 和 onRejected 保存在一个实例的数组中，在实例的
-         *  status 修改后，再调用
-         */
-        if (this.status === Promise.PENDING) {
-
-            this.callbacks.push({
-                onFulfilled,
-                onRejected
-            })
+        if (!(onFulfilled instanceof Function)) {
+            /**
+             * 当 then 为非 Function 类型的时候，会将调用 then 的 promise 的那个实例的 value 或者 reason 传递
+             * 给下一个 then 
+             * then 穿透
+             * 实现方式: 如果 onFulfilled, onRejected 的类型不是 Function , 把 promise 实例中的 value retrun 出去
+             */
+            onFulfilled = () => this.value
         }
+        if (!(onRejected instanceof Function)) {
+            /**
+             * 当 then 为非 Function 类型的时候，会将调用 then 的 promise 的那个实例的 value 或者 reason 传递
+             * 给下一个 then 
+             * then 穿透
+             * 实现方式: 如果 onFulfilled, onRejected 的类型不是 Function , 把 promise 实例中的 value retrun 出去
+             */
+            onRejected = () => {
+                throw this.value;
+            }
+        }
+        return new Promise((resolve, reject) => {
+
+            /**
+             *  在实例的 status 为 pending 时，then 被调用，说明 执行器中执行的是异步代码， 实例的 status 将在 then 方
+             * 法执行之后修改
+             *  为了触发 onFulfilled 和 onRejected ,考虑将 onFulfille 和 onRejected 保存在一个实例的数组中，在实例的
+             *  status 修改后，再调用
+             */
+            if (this.status === Promise.PENDING) {
+
+                this.callbacks.push({
+                    onFulfilled: value => {
+                        try {
+                            let result = onFulfilled(value);
+                            resolve(result)
+                        } catch (error) {
+                            reject(error)
+                        }
+                    },
+                    onRejected: reason => {
+                        try {
+                            let result = onRejected(reason);
+                            resolve(result)
+                        } catch (error) {
+                            reject(error)
+                        }
+                    }
+                })
+            }
 
 
-        /**
-         * try_catch 思路：当 onFulfilled 和 onRejected 执行时遇到错误后，抛出错误，使用 try_catch 捕获，此时，调用 onRejected 处理 error
-         * 根据实例 status 决定调用 onFulfilled 或者 onRejected ， 实例的 status 为 resolved 时，调用 onFulfilled ； 实例的 status 为 
-         * rejected 是调用 onRejected ; 当 onRejected 抛出异常时，调用 onRejected 其实也没用(hahaha,我还特意看了原生，也是这样，就不搞了)
-         */
-        try {
+            /**
+             * try_catch 思路：当 onFulfilled 和 onRejected 执行时遇到错误后，抛出错误，使用 try_catch 捕获，此时，调用 onRejected 处理 error
+             * 根据实例 status 决定调用 onFulfilled 或者 onRejected ， 实例的 status 为 resolved 时，调用 onFulfilled ； 实例的 status 为 
+             * rejected 是调用 onRejected ; 当 onRejected 抛出异常时，调用 onRejected 其实也没用(hahaha,我还特意看了原生，也是这样，就不搞了)
+             */
+
             if (this.status === Promise.FULFILLED) {
-                onFulfilled(this.value);
+                setTimeout(() => {
+                    try {
+                        let result = onFulfilled(this.value);
+                        resolve(result);
+                    } catch (error) {
+                        reject(error);
+                    }
+                });
             }
             if (this.status === Promise.REJECTED) {
-                onRejected(this.value);
+                setTimeout(() => {
+                    try {
+                        let result = onRejected(this.value);
+                        resolve(result);
+                    } catch (error) {
+                        reject(error);
+                    }
+                });
             }
-        } catch (error) {
-            onRejected(error);
-        }
 
+
+        })
     }
 }

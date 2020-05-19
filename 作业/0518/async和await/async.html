@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //async基础使用
+        async function fun1() {
+            console.log(1)
+            return 1;
+        }
+        // console.log(typeof fun1)
+        // console.log(fun1())
+
+        /**结果
+         * function
+         *  1
+         *  Promise { 1 }
+         **知识点
+         * 1.添加了async的function的类型没有发生改变
+         * 2.性质依旧是同步的性质
+         * 3.async修饰的代码的返回值是Promise类型，
+         *      Promise的status是resolved
+         *      Promise的value是return的值(非Promise类型时)
+         */
+
+        async function fun2() {
+            return new Promise((r1, r2) => {
+                // r1(1);
+                /**
+                 * Promise: status:resolved ,value: 1
+                 * su:1
+                 */
+                r2(2);
+                /**
+                 * Promise: status:rejected ,value: 2
+                 * fa:2
+                 */
+            })
+        }
+        // let res1 = fun2();
+        // let res2 = res1.then(v => {
+        //     console.log('su:', v);
+        // }, r => {
+        //     console.log('fa:', r);
+        // })
+        // console.log(res1 === res2);//false
+        /**
+         * 性质和Promise中的then类似
+         * 1.retrun基础值，则fun的结果为resolved状态，vale为return值的Promise实例
+         * 2.return Promise类型，则fun的结果的status、value和return的实例的
+         * status、value一致，但结果的实例和return的实例不是同一个
+        */
+
+        async function fun3() {
+            throw new Error(1)
+        }
+        fun3().then(v => {
+        }, r => {
+            console.log('r:', r);
+            /**
+             * r: Error: 1
+            */
+        })
+        fun3().then(v => { })
+            .catch(r => {
+                console.log(r);
+                /**
+                 *  Error: 1
+                */
+            })
+            // 如果fun内部报错，其结果和then内报错一致
+
+
+
+    </script>
+</body>
+
+</html>

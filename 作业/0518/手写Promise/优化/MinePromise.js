@@ -9,7 +9,7 @@ class Promise {
     static resolve(value) {
         /**
          * Promise 实例的 status 只能被修改一次， 因为实例的 status 的初始值一定是 pending 所以，status 只能在
-         * pending 状态是才能被修改
+         * pending 状态是才能被修改 
          */
         if (this.status === Promise.PENDING) {
             this.status = Promise.FULFILLED;
@@ -34,6 +34,7 @@ class Promise {
      * @param {String} reason 表示Promise被拒绝的原因。
      */
     static reject(reason) {
+
         /**
          * Promise 实例的 status 只能被修改一次， 因为实例的 status 的初始值一定是 pending 所以，status 只能在
          * pending 状态是才能被修改
@@ -97,39 +98,103 @@ class Promise {
         /**
          * 思路：当 then 传入的 onFulfilled 和 onRejected 不是 Function 类型时，把其转为一个空类型，以便后续代码执行时不报错
          */
-        if (!(onFulfilled instanceof Function)) onFulfilled = () => {}
-        if (!(onRejected instanceof Function)) onRejected = () => {}
-
-        /**
-         *  在实例的 status 为 pending 时，then 被调用，说明 执行器中执行的是异步代码， 实例的 status 将在 then 方
-         * 法执行之后修改
-         *  为了触发 onFulfilled 和 onRejected ,考虑将 onFulfille 和 onRejected 保存在一个实例的数组中，在实例的
-         *  status 修改后，再调用
-         */
-        if (this.status === Promise.PENDING) {
-
-            this.callbacks.push({
-                onFulfilled,
-                onRejected
-            })
+        if (!(onFulfilled instanceof Function)) {
+            /**
+             * 当 then 为非 Function 类型的时候，会将调用 then 的 promise 的那个实例的 value 或者 reason 传递
+             * 给下一个 then 
+             * then 穿透
+             * 实现方式: 如果 onFulfilled, onRejected 的类型不是 Function , 把 promise 实例中的 value retrun 出去
+             */
+            onFulfilled = () => this.value
         }
+        if (!(onRejected instanceof Function)) {
+            /**
+             * 当 then 为非 Function 类型的时候，会将调用 then 的 promise 的那个实例的 value 或者 reason 传递
+             * 给下一个 then 
+             * then 穿透
+             * 实现方式: 如果 onFulfilled, onRejected 的类型不是 Function , 把 promise 实例中的 value retrun 出去
+             */
+            onRejected = () => this.value
+        }
+        return new Promise((resolve, reject) => {
+            let self = this;
+
+            function util(fun) {
+                try {
+                    let result = fun(self.value);
+                    if (result instanceof Promise) {
+                        /**
+                         * 如果 then 中 return 的值时一个 promise （return 的 promise 实例
+                         * 和 then 返回的 promise 不是同一个值），则 then 的返回的 promise 实例
+                         * 会和 return 的实例的 status 一致：
+                         *      如果 result 是 resolved ,则 then 的结果也是 resolved ,即：
+                         * then 的结果的 promise 实例的 resolve 被调用
+                         *      如果 result 是 rejected ,则 then 的结果也是 rejected ,即：
+                         * then 的结果的 promise 实例的 reject 被调用
+                         */
+                        // result.then(value => {
+                        //     resolve(value)
+                        // }, reason => {
+                        //     reject(reason)
+                        // })
+                        /**
+                         *  优化：把 then 的结果的 promise 实例的 resolve 和 reject 方法当作
+                         * result 的 then 的 onFulfilled 和 onRejected ，这时 result.then的
+                         * 两个参数在执行的时候实质是执行了外层 then 的结果的那个 promise 实例的 
+                         * resolve 和 reject ，并且把 最外层 then 中的 this 所代表的实例的 value
+                         * 传了进去 
+                         * 涉及：闭包，流程中的各个不同的 this 指向，理解不清晰的可以画图帮助理解
+                         */
+                        result.then(resolve, reject);
+                    } else {
+                        resolve(result);
+                    }
+                } catch (error) {
+                    reject(error);
+                }
+            }
+
+            /**
+             *  在实例的 status 为 pending 时，then 被调用，说明 执行器中执行的是异步代码， 实例的 status 将在 then 方
+             * 法执行之后修改
+             *  为了触发 onFulfilled 和 onRejected ,考虑将 onFulfille 和 onRejected 保存在一个实例的数组中，在实例的
+             *  status 修改后，再调用
+             */
+            if (this.status === Promise.PENDING) {
+
+                this.callbacks.push({
+                    onFulfilled: value => {
+                        setTimeout(() => {
+                            util(onFulfilled)
+                        });
+                    },
+                    onRejected: reason => {
+                        setTimeout(() => {
+                            util(onRejected)
+                        });
+                    }
+                })
+            }
 
 
-        /**
-         * try_catch 思路：当 onFulfilled 和 onRejected 执行时遇到错误后，抛出错误，使用 try_catch 捕获，此时，调用 onRejected 处理 error
-         * 根据实例 status 决定调用 onFulfilled 或者 onRejected ， 实例的 status 为 resolved 时，调用 onFulfilled ； 实例的 status 为 
-         * rejected 是调用 onRejected ; 当 onRejected 抛出异常时，调用 onRejected 其实也没用(hahaha,我还特意看了原生，也是这样，就不搞了)
-         */
-        try {
+            /**
+             * try_catch 思路：当 onFulfilled 和 onRejected 执行时遇到错误后，抛出错误，使用 try_catch 捕获，此时，调用 onRejected 处理 error
+             * 根据实例 status 决定调用 onFulfilled 或者 onRejected ， 实例的 status 为 resolved 时，调用 onFulfilled ； 实例的 status 为 
+             * rejected 是调用 onRejected ; 当 onRejected 抛出异常时，调用 onRejected 其实也没用(hahaha,我还特意看了原生，也是这样，就不搞了)
+             */
+
             if (this.status === Promise.FULFILLED) {
-                onFulfilled(this.value);
+                setTimeout(() => {
+                    util(onFulfilled)
+                });
             }
             if (this.status === Promise.REJECTED) {
-                onRejected(this.value);
+                setTimeout(() => {
+                    util(onRejected)
+                });
             }
-        } catch (error) {
-            onRejected(error);
-        }
 
+
+        })
     }
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        async function fun() {
+            /**
+             * await 只能在async修饰的function中使用
+             */
+            let p = new Promise((r1, r2) => {
+                r1(1);
+            })
+            let res = await p;
+            console.log(res);//1
+            /**
+             * await可以获取Promise实例中resolve的值
+            */
+            let res1 = await { a: 1 };
+            console.log(res1);//{a:1}
+            /**
+             * await右侧如果是非promise实例，结果就是直接返回改值
+            */
+
+            let p1 = new Promise((r1, r2) => {
+                r2(1);
+            })
+            try {
+                let res2 = await p1;
+                console.log("123", res2);
+                /**
+                 * await 只能处理Promise的resolved状态
+                */
+            } catch (error) {
+                console.log(error); //1
+            }
+
+
+        }
+        fun()
+
+    </script>
+
+</body>
+
+</html>

@@ -14,6 +14,8 @@
             setTimeout(() => {
                 resolve("成功");
                 // reject("失败");
+                console.log("p=>afterresolve");
+
             }, 1000)
         });
         p.then(value => {
