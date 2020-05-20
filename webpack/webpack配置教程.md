@@ -292,7 +292,7 @@ Polyfill 是一块代码（通常是 Web 上的 JavaScript），用来为旧浏�
 
 3. 安装 loader
   ```shell
-  > npm install file-loader url-loader --save-dev 
+  > npm install file-loader url-loader --save-
   ```
 
   > 补充：url-loader是对象file-loader的上层封装，使用时需配合file-loader使用。
