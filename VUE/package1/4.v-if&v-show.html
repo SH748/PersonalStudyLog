@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if&v-show</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="btn1">切换内容</button>
+        <button @click="isSeen = !isSeen">切换内容</button>
+        <p v-if="isSeen">魁拔</p>
+        <p v-else>星游记</p>
+        <hr>
+        <button @click="btn2">切换显示内容</button>
+        <p v-show="isShow">魁拔</p>
+        <p v-show="!isShow">星游记</p>
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                isSeen: false,
+                isShow: false,
+            },
+            methods: {
+                btn1: function () {
+                    console.log(this);
+                    //this:vue实例对象vm
+                    this.isSeen = !this.isSeen;
+                },
+                btn2: function () {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+        /**
+         *
+         *  v-if:为false会从dom树中移除
+         * v-show:为false时，会被设置display=none,dom树中一直存在
+         *
+         * v-if和v-show选择：
+         *      取决于节点是否需要一直在dom树中存在
+        */
+    </script>
+
+</body>
+
+</html>

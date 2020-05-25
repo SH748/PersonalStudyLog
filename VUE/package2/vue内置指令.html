@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue内置指令</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{a}}</p>
+        <p v-text="a"></p>
+        <p v-html="a"></p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                a: '<a href="http://www.baidu.com">百度 </a>'
+            }
+        })
+        /**
+         *  v-bind:简写 ':'
+         *  v-model:简写 '@'
+         *  v-if 条件渲染
+         *  v-else-if 配合v-if使用
+         *  v-else: 配合v-if使用
+         *  v-show 条件渲染指令
+         *  v-on 绑定事件监听
+         *  v-for   列表渲染
+         *  v-text 显示文本 -- 原生DOM中的innerText
+         *  v-html：显示标签 -- 原生DOM中的innerHtml
+        */
+
+    </script>
+</body>
+
+</html>

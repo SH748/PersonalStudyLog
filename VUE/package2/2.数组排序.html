@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue数组排序</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>数组排序</legend>
+            <input type="text" v-model="seach">
+            <ul>
+                <li v-for="(item,index) in newArr">
+                    {{index}}-----{{item.id}}----{{item.name}}--------{{item.age}}
+                </li>
+            </ul>
+            <button @click="status = 1">升序</button>
+            <button @click="status = 2">降序</button>
+            <button @click="status = 0">复原</button>
+        </fieldset>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                seach: "",
+                status: 0,
+                template: [{
+                    id: 1,
+                    name: "Jack",
+                    age: 30
+                }, {
+                    id: 2,
+                    name: "Rose",
+                    age: 18
+                }, {
+                    id: 3,
+                    name: "Tom",
+                    age: 20
+                }, {
+                    id: 4,
+                    name: "Tim",
+                    age: 13
+                }],
+            },
+            computed: {
+                newArr() {
+                    const { template, seach, status } = this;
+                    const arr = template.filter((item) => item.name.toUpperCase().indexOf(seach.toUpperCase()) !== -1)
+                    if (status > 0) {
+                        arr.sort((f, s) => {
+                            return status === 2 ? s.age - f.age : f.age - s.age;
+                        })
+                    }
+                    return arr;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

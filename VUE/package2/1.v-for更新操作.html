@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for更新操作</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>操作</legend>
+            <button @click="add">新增</button><br>
+            <label for="">第一个<input type="text" v-model="first"></label><br>
+            <label for="">第二个<input type="text" v-model="second"></label><br>
+            <label for="">第三个<input type="text" v-model="third"></label><br>
+        </fieldset>
+        <ul>
+            <li v-for="(item,index) in template" :key="item.id">
+                {{index}}---{{item.id}}----{{item.first}}-----{{item.second}}-----{{item.third}}----
+                <button @click="update">修改</button @c>----
+                <button @click="del(index)">删除</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                first: "",
+                second: "",
+                third: "",
+                id: 1,
+                template: [
+                    { id: 1, first: "a", second: "b", third: "c" },
+                    { id: 2, first: "a", second: "b", third: "c" },
+                    { id: 3, first: "a", second: "b", third: "c" },
+                    { id: 4, first: "a", second: "b", third: "c" },
+                    { id: 5, first: "a", second: "b", third: "c" },
+                ]
+            },
+            methods: {
+                add() {
+                    const { first, second, third } = this;
+                    this.template.push({ id: ++this.id, first, second, third })
+                },
+                del(index) {
+                    this.template.splice(index, 1);
+                },
+                update() {
+                    console.log('1');
+
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

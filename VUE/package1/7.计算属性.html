@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性和监视</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>姓名</legend>
+            <label>姓：<input type="text" v-model="firstName" v-model="firstName" /></label><br><br>
+            <label>名<input type="text" v-model="lastName" v-model="lastName" /></label>
+        </fieldset>
+        <fieldset>
+            <legend>单向双向数据绑定</legend>
+            <label>单向<input type="text" v-model="fullName"></label><br><br>
+            <label>单向-监听<input type="text" v-model="fullName3"></label><br><br>
+            <label>双向<input type="text" v-model="fullName2" /></label>
+        </fieldset>
+    </div>
+    <script>
+        Vue.config.devtools = true;
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                firstName: '狗',
+                lastName: '东西',
+                fullName3: ""
+            },
+            computed: {
+                fullName: function () {
+                    return this.firstName + "-" + this.lastName
+                },
+                fullName2: {
+                    get: function () {
+                        console.log('1');
+                        return this.firstName + "-" + this.lastName;
+                    },
+                    set: function (val) {
+                        console.log('2');
+                        let list = val.split("-");
+                        this.firstName = list[0];
+                        this.lastName = list[1];
+                    }
+                }
+            },
+            watch: {
+                firstName: function (val) {
+                    console.log('3');
+                    this.fullName3 = val + "-" + this.lastName;
+                }
+            }
+        })
+        vm.$watch("lastName", function (val) {
+            this.fullName3 = this.firstName + "-" + val;
+        })
+
+    </script>
+</body>
+
+</html>

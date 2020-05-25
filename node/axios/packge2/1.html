@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
+</head>
+
+<body>
+    <table class="table table-hover">
+        <thead>
+            <th>#</th>
+            <th>内容</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table class="table">
+    <script>
+
+        //https://api.apiopen.top/getJoke?type=text
+        function getList() {
+            axios({
+                method: 'GET',
+                url: 'https://api.apiopen.top/getJoke?type=text',
+            }).then(v => {
+                console.log(v.data.result);
+                let result = v.data.result;
+                result.forEach((element, index) => {
+                    $("tbody").append(`<tr><td>${element.sid}</td><td>${element.text}</td></tr>`)
+                });
+            })
+        }
+        getList();
+        console.log(window);
+    </script>
+</body>
+
+</html>

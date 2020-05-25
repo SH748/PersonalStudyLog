@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue基础学习一</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--插值表达式-->
+        <h2>{{msg}}</h2>
+        <h2>{{msg.toUpperCase()}}</h2>
+        <h2>{{msg.split(" ").reverse().join("-")}}</h2>
+        <h2>{{msg.toUpperCase()}}</h2>
+        <hr>
+        <!--强制数据绑定-->
+        <a v-bind:href="url">Bilibili</a>
+        <a :href="url">Bilibili</a>
+        <input type="text" :value="shi">
+        <hr>
+        <!--绑定事件监听-->
+        <button v-on:click="butclick0">0</button>
+        <button v-on:click="butclick1">1</button>
+        <hr>
+        <button @click="butclick2">2</button>
+        <button @click="butclick3">获取对象</button>
+        <p ref="p1">Lorem ipsum dolor sit amet.</p>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "Lorem ipsum dolor sit amet.",
+                url: "https://www.bilibili.com",
+                shi: "除却巫山不是云"
+            },
+            methods: {
+                butclick0: function () {
+                    console.log('btn0');
+                },
+                butclick1: function () {
+                    console.log('btn1');
+                },
+                butclick2: function () {
+                    console.log('btn2');
+                },
+                butclick3: function () {
+                    console.log('btn3');
+                    console.log(this.$refs["p1"]);
+                    this.$refs["p1"].innerText = "别点我"
+                },
+            }
+        })
+
+        /**
+         *  data对象中定义的属性和值的关系---->键值对的关系
+         * data中的msg叫属性
+         * html容器中的插值语法中：msg----->表达式
+         *
+         * html容器中的插值语法用 {{}} 双大括号声明,中间写入表达式
+         * 插值语法的使用总结：
+         *  1.一般，插值语法用在成对的标签中间
+         *
+         * 对象
+         *
+         * 强制数据绑定：为一个属性动态的绑定一个表达式 ps:该属性的值时动态的
+         * v-bind:在vue中叫指令(其中一个指令)，该指令作用：强制数据绑定
+         * v-bind:属性名="属性值"  简写： ':属性名="表达式"'   例如： :name   :href  :src    :type
+         *
+         * 绑定事件监听： 为一个html标签动态的绑定一个事件，
+         * ps:为html标签添加一个事件，该事件的回调函数需要在十里换的Vue的配置对象中methods对象中定义
+         * v-on:事件名   或则  v-on:事件类型
+         * v-on:事件名字="回调函数"
+         * v-on:vue的指令之一，用来绑定事件监听的
+         * 使用事件监听指令注意事项：
+         *
+        */
+    </script>
+</body>
+
+</html>

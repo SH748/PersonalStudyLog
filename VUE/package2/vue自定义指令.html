@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue自定义指令</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-textUpper="msg"></p>
+        <p v-lower="msg"></p>
+    </div>
+    <script>
+        Vue.directive('textUpper', {
+            inserted: function (el, binding) {
+                el.innerHTML = binding.value.toUpperCase();
+            }
+        }
+        )
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "Lorem ipsum dolor sit amet."
+            },
+            directives: {
+                'lower': (el, bin) => {
+                    el.innerHTML = bin.value.toLowerCase();
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

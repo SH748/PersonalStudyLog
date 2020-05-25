@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue生命周期</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="updateShow">更新数据</button>
+        <button @click="clear">清楚VM</button>
+        <p v-show="isShow">Lorem, ipsum.</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isShow: false
+            },
+            methods: {
+                updateShow() {
+                    this.isShow = !this.isShow;
+                },
+                clear() {
+                    this.$destroy();
+                },
+            },
+            //数据初始化之前--生命周期钩子
+            beforeCreate() {
+                console.log('数据初始化之前', this.isShow);
+            },
+            created() {
+                console.log('数据初始化之后', this.isShow);
+            },
+            beforeMount() {
+                console.log('界面显示之前');
+            },
+            mounted() {
+                console.log('界面显示之后');
+            },
+            beforeUpdate() {
+                console.log('界面更新之前', this.isShow);
+            },
+            updated() {
+                console.log('界面更新之后', this.isShow);
+            },
+            beforeDestroy() {
+                console.log('VM销毁之前');
+            },
+            destoryed() {
+                console.log('VM销毁之后');
+            }
+        })
+    </script>
+</body>
+
+</html>

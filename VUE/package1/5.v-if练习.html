@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if练习</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="add">点击 {{num}}</button>
+        <p v-if="num===1">1</p>
+        <p v-else-if="num === 2">2</p>
+        <p v-else-if="num === 3">3</p>
+        <p v-else-if="num === 4">4</p>
+        <p v-else-if="num === 5">5</p>
+        <p v-else>0</p>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: "#app",
+            data: {
+                num: 0,
+            },
+            methods: {
+                add: function () {
+                    this.num < 5 ? this.num = this.num + 1 : this.num = 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.js"></script>
+    <script src='http: //libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
+
+</head>
+
+<body>
+    <button class="btn btn-success">1</button>
+    <button class="btn btn-warning">2</button>
+    <script>
+        axios.defaults.baseURL = "https://api/github.com";
+        axios.defaults.timeout = 3000;
+        axios.interceptors.request.user(function (config) {
+            NProgress.start();
+            return config;
+        });
+        axios.interceptors.resopns.use(function (response) {
+            NProgress.done();
+            return response.data;
+        }, function (error) {
+            console.log(error);
+            return new Promise((r1, r2) => { });
+        })
+    </script>
+</body>
+
+</html>

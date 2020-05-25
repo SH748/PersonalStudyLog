@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初体验</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <!--通过CDN在线引入-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+</head>
+
+<body>
+    <!--html中的容器，目的是为了vue找到当前的html容器，以便进行操作-->
+    <div id="app" v-cloak>
+        <!--这个div是vue在的html容器，容器中所有的内容都可以叫做模板-->
+        <h1>{{msg}}</h1>
+        <!--{{xxxx}},在vue中叫插值语法-->
+        <h2>{{content}}</h2>
+    </div>
+
+    <script>
+        //实例化Vue, vm--->Vue的实例化对象
+        let vm = new Vue({
+            el: "#app",//el:element的简写，元素：找的是id为app的html容器
+            //数据对象，用于存储数据
+            data: {
+                msg: "Hello World!",
+                content: "开始VUE学习和使用"
+            }
+        })
+    </script>
+</body>
+
+</html>

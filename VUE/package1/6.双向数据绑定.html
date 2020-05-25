@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>双向数据绑定</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <fieldset>
+            <legend>双向数据绑定</legend>
+            <input type="text" v-model="msg" />
+            <p>{{msg}}</p>
+        </fieldset>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello"
+            }
+        })
+    </script>
+
+</body>
+
+</html>
