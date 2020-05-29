@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边距合并</title>
+</head>
+<body>
+    <style>
+        *{
+            font-size: 16px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+            margin: 20px 0;
+        }
+        pre{
+            width: 500px;
+            white-space: pre-wrap;
+            color: darkorchid;
+            background-color: lightblue;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        body>div:nth-of-type(1){
+            border: 1px solid red;
+            width: 100px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        body>div:nth-of-type(2){
+            width: 100px;
+            height: 50px;
+            border: 1px solid green;
+            margin-top: 20px;
+        }
+    </style>
+    <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
+    </ul>
+    <pre>
+
+    ul li{
+        argin: 20px 0;
+    }
+    给li便签设置了上下边距为20px，上一个元素有20px下边距，下一个元素有上边距20px。
+    按一般思维理解，两个元素的间距应该是相加40px（暨:上一个元素的下边距+下一个元素的上边距），但实际距离为20px。因为发生了边距合并，此时两个元素的距离是取自两个元素的外边距的最大值。
+    因为都为20px，所以两个元素的距离取任意一个值都是可以的，所以是20px
+
+    </pre>
+
+    <div>part1</div>
+    <div>part2</div>
+    <pre>
+
+    body>div:nth-of-type(1){
+        /*part1*/
+        border: 1px solid red;
+        width: 100px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+    body>div:nth-of-type(2){
+        /*part2*/
+        width: 100px;
+        height: 50px;
+        border: 1px solid green;
+        margin-top: 20px;
+    }
+    给part1设置下边距为10px,给part2设置边距20px.
+    展示结果：两元素间距20px。
+    原因：边距合并，取两者中最大的一个生效
+        </pre>
+</body>
+</html>

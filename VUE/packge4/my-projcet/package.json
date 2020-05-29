@@ -1,5 +1,5 @@
 {
-  "name": "vue_study_packge3",
+  "name": "my-projcet",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "ts <1759133858@qq.com>",
@@ -11,7 +11,6 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "pubsub-js": "^1.8.0",
     "vue": "^2.5.2"
   },
   "devDependencies": {

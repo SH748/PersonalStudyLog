@@ -10,13 +10,13 @@
 
 <body>
     <div id="app">
-        <p v-textUpper="msg"></p>
+        <p v-textAupper="msg"></p>
         <p v-lower="msg"></p>
     </div>
     <script>
-        Vue.directive('textUpper', {
+        Vue.directive('textAupper', {
             inserted: function (el, binding) {
-                el.innerHTML = binding.value.toUpperCase();
+                el.innerText = binding.value.toUpperCase();
             }
         }
         )
