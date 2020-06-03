@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="cc" v-bind:class="msg">点击</button>
+        <div>{{aa}}</div>
+        <div>{{aa}}</div>
+    </div>
+    <script src="./js/mvvm.js"></script>
+    <script src="./js/compile.js"></script>
+    <script src="./js/watcher.js"></script>
+    <script src="./js/observer.js"></script>
+    <script >
+        console.log(window);
+        
+        let mm = new  MVVM({
+            el:'#app',
+            data:{
+                msg:'123'
+            },
+            methods:{
+                cc(){
+                    console.log(11)
+                }
+            },
+            computed:{
+                aa(){
+                    console.log('111');
+                    return this.msg;
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

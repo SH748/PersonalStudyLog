@@ -1,0 +1,11 @@
+$fontfamily = '华文新魏'
+h2{
+    font-family: $fontfamily
+    color #986
+}
+div{
+    width 100px
+    height 100px
+    border 1px solid #000
+    background-color #0c6
+}

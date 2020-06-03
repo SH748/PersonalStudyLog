@@ -1,0 +1,10 @@
+h2 {
+  font-family: '华文新魏';
+  color: #986;
+}
+div {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+  background-color: #0c6;
+}
