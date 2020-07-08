@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Hello</title>
+    <style>
+        .bac {
+            background-color: lightblue;
+            width: 200px;
+            height: 200px;
+            color: lightcoral;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root" class></div>
+    <!-- 提供react核心api-->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <!-- 提供了react中操作dom的api-->
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script>
+        const root = document.getElementById("root")
+        const h1 = React.createElement('h1',{},'Hello Recat.....')
+        // ReactDOM.render(h1,root)
+        const hr = React.createElement('hr',{})
+
+        const bac = React.createElement('div',{className:'bac'},"This Element has class:bac")
+
+        const label = React.createElement('label',{htmlFor:'ra'},'htmlFor')
+        // const radio = React.createElement('input',{type:'radio',id:'ra'},'hello')
+        ReactDOM.render([h1,hr,bac,hr,label,hr],root)
+
+    </script>
+</body>
+
+</html>

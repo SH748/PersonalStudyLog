@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Component</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root")
+        function Hello(){
+            return <h1>Hello React Components</h1>
+        }
+        ReactDOM.render(<Hello></Hello>,root)
+    </script>
+</body>
+
+</html>

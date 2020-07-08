@@ -552,3 +552,133 @@ outline:solid 3px gray;
 outline:none;
 ```
 
+## Float 元素浮动
+
+### 为元素开启浮动
+
+```html
+<div class="float">
+</div>
+<style>
+    .float{
+        float:left;/*有效值:left,right*/
+    }
+</style>
+```
+
+
+
+### 特点
+#### 文字环绕图片
+
+**==浮动元素后的兄弟元素的文本节点内容时候会被浮动元素覆盖？==**
+
+**不会**
+
+```html
+<style>
+    .box{
+        width:100px;
+        height:100px;
+        background-color: lightblue;
+    } 
+    .float{
+        float:left
+    }
+    /*文本不会被浮动元素覆盖*/
+</style>
+
+<body>
+    <div class="float box">
+    </div>
+    <p>
+        Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
+
+Hook 是向下兼容的。本页面为有经验的 React 用户提供一个对 Hook 的概览。这是一个相当快速的概览，如果你有疑惑，可以参阅下面这样的黄色提示框。
+
+详细说明
+
+有关我们为什么要在 React 中引入 Hook 的原因，请参考动机。
+
+↑↑↑ 每个部分的结尾都会有一个如上所示的黄色方框。 它们会链接到更详细的说明。
+
+
+    </p>
+</body>
+```
+
+#### 元素脱离文档流
+
+* 元素设置浮动后，将会从标准文档流中脱离
+  * 脱离文档流后，一些元素的特点也会发生改变
+
+1. block元素不再占据整行
+2. 脱离文档流以后，block元素的宽和高默认被内容撑开（在不设置元素宽高的情况下）
+3. inline元素脱离文档流以后会变成block元素，特点和block元素一样（可以设置宽高）
+   1. 脱离文档流以后不再区分元素的inline和block 
+
+### 高度塌陷
+
+#### BFC
+
+1. 开启bfc的元素不会被浮动元素覆盖
+2. 开启BFC的元素子元素和父元素不会重叠
+3. 开启BFC的元素可以包含浮动子元素
+
+开启BFC的方式
+
+1. 设置浮动（元素从文档流脱离） 不推荐
+2. display：inline-block (在不明确设置宽度的前提下，宽度消失)  不推荐
+3. 设置overflow设置为非visible的属性  —–>不算完美
+   1. overflow:hidden 开启BFC
+   2. overflow：auto  开启BFC
+
+ #### 解决方案
+
+ ```css
+.clearfix:after,
+.clearfix:befor{
+    display:table;
+    content:'';
+    clear:both
+}
+ ```
+
+----------------------------------
+
+## position定位
+
+### 为元素设置定位
+
+```html
+<div class="position"></div>
+<style>
+    .position{
+        position:relative /*有效值：static,relative,absolute,sticky,fixed*/
+    }
+</style>
+```
+
+### 偏移量
+
+* 当一个元素开启定位后，可以给元素设置top,left,bottom,right用以设置元素的偏移量
+
+### relative相对定位
+
+* 语法
+  * position:relative
+* 特点：
+  * 开启相对定位后，如果元素不设置偏移量，元素不会发生任何变化（开启相对定位的元素依然停留在标准文档流中）
+  * 相对定位的偏移量计算是相对于元素在原始标准文档流中的位置计算的
+  * 开启相对定位的元素的层级会提升
+  * 开启定位的元素不会脱离文档流
+  * 相对定位不会改变元素的display属性
+  * 相对定位的元素在标准文档流中的原始的位置不会消失，后面的元素不会占据定位元素的原始位置
+
+### 绝对定位
+
+* 语法：
+  * position:absolute
+* 特点
+  * 
+

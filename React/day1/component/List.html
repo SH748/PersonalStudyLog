@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class Components</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+    <script type="text/babel"> 
+    //jsx <xxx></xxx> 组件
+        const root = document.getElementById("root")
+
+        class Hello extends React.Component {
+            state = {
+               list:[<p>1</p>,<p>2</p>,<p>3</p>,<p>4</p>],
+               list2:[1,2,3]
+            }
+            render() {
+                return (
+                    <div>
+                      <h1>list</h1>
+                      {this.state.list}
+                      {this.state.list2}
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Hello />, root)
+
+    </script>
+</body>
+
+</html>

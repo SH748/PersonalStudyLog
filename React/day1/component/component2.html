@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class Components</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="../../js/react.development.js"></script>
+    <script src="../../js/react-dom.development.js"></script>
+    <script src="../../js/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root")
+
+        class Hello extends React.Component {
+            state = {
+                name: "React Component",
+                num: 0 
+            }
+            handler() {
+                this.setState({
+                    num: ++this.state.num
+                })
+            }
+            render() {
+                console.log(this);
+                return (
+                    <div>
+                        <button
+                            // onClick={() => {
+                            //     this.setState({
+                            //         num: ++this.state.num
+                            //     })
+                            // }
+                            // }
+                            onClick={this.handler.bind(this)}
+                        >点击</button>
+                        <h1>{this.state.name}</h1>
+                        <h2>点击次数:{this.state.num}</h2>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Hello />, root)
+
+    </script>
+</body>
+
+</html>

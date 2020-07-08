@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        let bo = true
+        const root = document.getElementById("root")
+        const obj = {
+            a:1,
+            b:2
+        }
+        let button = <button id="bu" key="bu">点击</button>
+        let div =<div key='di'>
+            <div>{obj.a}</div>
+            <div>{obj.b}</div>
+        </div>
+        let div2 = <div key="di2">{bo?'1':'2'}</div>
+        ReactDOM.render([button,div,div2],root)
+        window.onload=function(){
+            document.getElementById("bu").onclick=function(){
+                console.log(bo);
+                bo = !bo
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            font-size: 30px;
+        }
+
+        .a {
+            background-color: lightblue;
+        }
+
+        .b {
+            background-color: lightcoral;
+            position: relative;
+            top: -100px;
+            left: 300px;
+        }
+
+        .c {
+            background-color: lightgreen;
+        }
+
+        .position {
+            position: absolute;
+            top: 500px;
+            left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="a">1</div> -->
+    <!-- <div class="b">2</div> -->
+    <div style="position: relative;">
+        <input type="text" class="position" placeholder="hello">
+    </div>
+    <!-- <div class="c">3</div> -->
+</body>
+
+</html>

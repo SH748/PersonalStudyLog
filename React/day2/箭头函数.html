@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+      window.onload=function(){
+        var fn = () => {
+            // console.log(arguments);
+            /**
+             * 箭头函数中不可以使用arguments对象
+             */
+        }
+        fn(1, 2, { a: 3 })
+
+        //this
+        var fn2 = () => {
+            console.log(this);//浏览器中，在全局定义的箭头函数的this指向window
+        }
+        // fn2();
+        var fn4
+        var obj = {
+            fn3(){
+                console.log(this);
+                fn4 =()=>{
+                    console.log("4",this);//箭头函数的this在其定义时就确定了，是定义时所在的作用域的this
+                    /**
+                     * 在fn4中，this在赋值时就确定了this指向，当在外部调用该函数时，函数执行时的this依旧是赋值时确定的this，也就是fn3中的this，fn3值obj中的属性，只能通过obj.fn3来调用，所以fn3中的this是obj，所以fn4的this也是obj
+                    */
+                }
+            }
+        }
+        let arr = [1,2,3]
+        obj.fn3.call(arr)
+        fn4()
+        console.log(fn4);
+        
+        // document.querySelector("button").onclick=fn4
+        // document.querySelector("button").onclick= ()=>{
+        //     console.log(this);//window
+        //     console.log(arguments);
+            
+        // }
+        var fn5;
+        document.querySelector("button").onclick = function(){
+            (()=>{
+                console.log(this);//button的dom对象
+            })()
+            setTimeout(() => {
+                console.log(this);//button的dom对象
+            }, 5);
+            fn5=()=>{
+                console.log(this);
+            }
+        }
+      }
+      setInterval(function(){
+          console.log(fn5);
+          
+      },1000)
+</script>
+</body>
+
+</html>
