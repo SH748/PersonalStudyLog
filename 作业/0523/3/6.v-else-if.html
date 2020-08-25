@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-else-if</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="abd">
+        <h1>{{title}}</h1>
+        <button @click="choose">咳咳</button>
+        <p v-if="num ===1">A</p>
+        <p v-else-if="num ===2">B</p>
+        <p v-else-if="num ===3">C</p>
+        <p v-else-if="num ===4">D</p>
+        <p v-else-if="num ===5">E</p>
+        <p v-else>A--</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#abd",
+            data: {
+                title: "不解释了",
+                num: 0,
+            },
+            methods: {
+                choose() {
+                    this.num < 5 ? this.num++ : this.num = 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

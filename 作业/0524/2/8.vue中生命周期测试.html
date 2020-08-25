@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <button @click="isTure=!isTure">更新</button>
+        <button @click="clear">销毁</button>
+        <p v-show="isTure">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, nam!</p>
+    </div>
+    <script>const app = new Vue({
+            el: '#app',
+            data: {
+                isTure: false
+            },
+            methods: {
+                updateShow() {
+                    this.isShow = !this.isTure
+                },
+                clear() {
+                    this.$destroy()
+                }
+            },
+            // 数据初始化之前---生命周期钩子(回调函数)  new Vue 之后 data之前
+            beforeCreate() {
+                console.log('数据初始化之前', this.isTure)
+            },
+            // 数据初始化之后--生命周期钩子(回调函数) data之后
+            created() {
+                console.log('数据初始化之后', this.isTure)
+            },
+            // 界面显示之前---生命周期钩子(回调函数) 
+            beforeMount() {
+                console.log('界面显示之前')
+            },
+            // 界面显示之后---生命周期钩子(回调函数)
+            mounted() {
+                console.log('界面显示之后')
+            },
+            // 界面更新之前---生命周期钩子(回调函数)
+            beforeUpdate() {
+                console.log('界面更新之前', this.isTure)
+            },
+            // 界面更新之后---生命周期钩子(回调函数)
+            updated() {
+                console.log('界面更新之后', this.isTure)
+            },
+            // 销毁之前
+            beforeDestroy() {
+                console.log('vm卸载之前')
+            },
+            // 销毁之后
+            destroyed() {
+                console.log('vm卸载之后')
+            }
+        })
+    </script>
+</body>
+
+</html>

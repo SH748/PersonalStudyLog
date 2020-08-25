@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <button @click="isTure=!isTure">更新</button>
+        <button @click="clear">销毁</button>
+        <p v-show="isTure">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, nam!</p>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isTure: false,
+                cId: null,
+            },
+            beforeDestroy() {
+                clearInterval(this.cId)
+            },
+            mounted() {
+                this.cId = setInterval(() => {
+                    this.isTure = !this.isTure;
+                }, 5000);
+            },
+            methods: {
+                clear() {
+                    this.$destroy();
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

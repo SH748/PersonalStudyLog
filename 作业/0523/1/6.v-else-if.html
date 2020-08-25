@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-else-if</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="abd">
+        <h1>{{title}}</h1>
+        <button @click="add">点击</button>
+        <p v-if="num ===1">1</p>
+        <p v-else-if="num ===2">2</p>
+        <p v-else-if="num ===3">3</p>
+        <p v-else-if="num ===4">4</p>
+        <p v-else-if="num ===5">5</p>
+        <p v-else>0</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#abd",
+            data: {
+                title: "v-else-if",
+                num: 0,
+            },
+            methods: {
+                add() {
+                    this.num < 5 ? this.num++ : this.num = 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

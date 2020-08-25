@@ -1,0 +1,102 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7ed6df;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+body main .top .sun {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+body main .top .sun section {
+  width: 220px;
+  height: 220px;
+  z-index: -1;
+  position: absolute;
+  transform: rotateZ(0deg) translateY(45px);
+  box-sizing: border-box;
+}
+body main .top .sun section div {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 100%;
+}
+body main .top .sun section div::after,
+body main .top .sun section div::before {
+  width: 10px;
+  height: 25px;
+  position: absolute;
+  content: "";
+  display: block;
+  background-color: #f0932b;
+}
+body main .top .sun section div::after {
+  bottom: 0;
+  left: 0;
+}
+body main .top .sun section > div:nth-child(1) {
+  transform: translateX(-50%) rotate(0deg);
+}
+body main .top .sun section > div:nth-child(2) {
+  transform: translateX(-50%) rotate(30deg);
+}
+body main .top .sun section > div:nth-child(3) {
+  transform: translateX(-50%) rotate(60deg);
+}
+body main .top .sun section > div:nth-child(4) {
+  transform: translateX(-50%) rotate(90deg);
+}
+body main .top .sun section > div:nth-child(5) {
+  transform: translateX(-50%) rotate(120deg);
+}
+body main .top .sun section > div:nth-child(6) {
+  transform: translateX(-50%) rotate(150deg);
+}
+body main .top .sun .round {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #f0932b;
+  transform: translateY(90px);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+body main .top .sun .round .eye {
+  transform: translate(30px, 50px);
+  z-index: 1;
+  display: inline-block;
+}
+body main .top .sun .round .eye i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f0932b;
+  margin-right: 20px;
+}
+body main .foot {
+  width: 300px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 3px solid #f0932b;
+}
+body main .foot span {
+  opacity: 0.7;
+}

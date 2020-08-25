@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this指向</title>
+</head>
+
+<body>
+  <p id="ppp">xxxxxxxx</p>
+  <script>
+    window.onload = function () {
+      // function a() {
+      //   console.log(this);
+      // }
+      // let a = function () {
+      //   console.log(this)
+      //  }
+      // winodw.a();
+      // let obj = {
+      //   fun:function(){
+      //     console.log(this)
+      //   },
+      //   a:1,
+      //   b:2
+      // }
+      // obj.fun()
+      /*  
+        xxx.fun() 这这种调用形式，this指向xxx ，当xxx是浏览器中的window对象时，window.fun() 中的window可以省略 写作 fun()
+       */
+
+       function fun(){
+        //  console.log(this);
+        let a =1,ddd=2;
+                let that = this
+        this.that2 = this
+         this.b = function (){
+           return that
+         }
+         this.a = 1;
+       }
+       let o = {a:1,b:2}
+       let obj = new fun();
+       let aaaa = obj.b()
+
+       console.log(obj == obj.b())
+       let obj2 = new fun()
+       console.log(obj == obj2.b())
+
+      //  document.querySelector("#ppp").onclick = function (){
+      //    console.log(this);
+      //  }
+
+
+    }
+  </script>
+</body>
+
+</html>

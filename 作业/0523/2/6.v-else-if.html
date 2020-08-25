@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-else-if</title>
+    <script src="../js/vue.min.js"></script>
+    <style>
+        img {
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="xintiaodegangjue">
+        <h1>{{title}}</h1>
+        <button @click="add">不要点</button>
+        <p v-if="num ===1"><img
+                src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=350194523,3027574208&fm=26&gp=0.jpg"
+                alt=""></p>
+        <p v-else-if="num ===2"><img
+                src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2689262103,1205081357&fm=26&gp=0.jpg"
+                alt=""></p>
+        <p v-else-if="num ===3"><img
+                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4210320696,464343128&fm=26&gp=0.jpg"
+                alt=""></p>
+        <p v-else-if="num ===4"><img
+                src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1521417535,1610362259&fm=26&gp=0.jpg"
+                alt=""></p>
+        <p v-else-if="num ===5"><img
+                src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590311971054&di=d1d46b13e09a8c0d9f4d7afa6d34e33e&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fbb6a131a5a1b1b36e66bf910a3a6eb5b9cc0a537.jpg"
+                alt=""></p>
+        <p v-else><img
+                src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=949193241,2870818439&fm=26&gp=0.jpg"
+                alt=""></p>
+    </div>
+    <script>
+        new Vue({
+            el: "#xintiaodegangjue",
+            data: {
+                title: "不要点啊",
+                num: 0,
+            },
+            methods: {
+                add() {
+                    this.num < 5 ? this.num++ : this.num = 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

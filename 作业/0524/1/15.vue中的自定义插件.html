@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <p v-up="'Lermon'"></p>
+    </div>
+    <script src="./plugin.js"></script>
+    <script>
+        Vue.use(MyPlugin);
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        });
+        app.$myPlugin(app);
+        Vue.myGlobalMethod(Vue)
+    </script>
+</body>
+
+</html>

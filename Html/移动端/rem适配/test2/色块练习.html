@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色块练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100%;
+        }
+        .container .top{
+            width: 6.46rem;
+            height: 2.9rem;
+            background-color: #76d1a7;
+            margin: 1.47rem auto 0.43rem auto;
+        }
+        .container .content{
+            width: 6.46rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top"></div>
+        <div class="content">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+    <script>
+        function fn(){
+            document.documentElement.style.fontSize = (document.documentElement.clientWidth*100)/750 + "px"
+        }
+        window.onresize = fn
+        fn()
+    </script>
+</body>
+</html>

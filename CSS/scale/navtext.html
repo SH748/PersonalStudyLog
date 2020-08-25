@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;;
+    }
+    body{
+      width: 100vw;
+      height: 100vh;
+      background-color: #dff9fb;
+    }
+    main{
+      width: 100%;
+      height: 40px;
+
+      /* overflow: hidden; */
+    }
+    ul::after{
+      
+      content: "";
+      height: 0;
+      clear: both;
+      display: block;
+    }
+    ul{
+      width: 300px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+    ul li {
+      float: left;
+      margin: 10px;
+      list-style: none;
+      color: #fff;
+      border-radius: 2px;
+      width: 100px;
+      height: 35px;
+      text-align: center;
+      background-color: #badc58;
+      opacity: .8;
+      line-height: 35px;
+
+    }
+    ul li>div{
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(186, 220, 88, .6);
+      transform: scale(0);
+      transition: .5s;
+      transform-origin: top left;
+      z-index: 1;
+    }
+    ul li:hover>div{
+      transform: scale(1);
+      z-index: 3;
+      opacity: 1;
+    }
+    ul li>div>a{
+      text-decoration: none;
+      color: #535c68;
+      display: block;
+      text-indent: .5em;
+      width: 100px;
+      text-align: left;
+    }
+    ul+div{
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <ul>
+        <li>
+            <strong>VIDEO</strong>
+            <div>
+                <a href="">PHP</a>
+                <a href="">hdcms</a>
+                <a href="">laravel</a>
+            </div>
+        </li>
+        <li>
+            <strong>LIVE</strong>
+            <div>
+                <a href="">houdunren</a>
+                <a href="">angular</a>
+                <a href="">css3</a>
+            </div>
+        </li>
+    </ul>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur modi animi ea dolorem impedit rerum, culpa consequuntur quidem praesentium dolores accusantium quia necessitatibus ducimus distinctio eos officiis hic libero. Quos.</div>
+</main>
+</body>
+</html>

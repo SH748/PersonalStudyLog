@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./2.css">
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="button">
+        <button data-scale="1">1</button>
+        <button data-scale="2">2</button>
+        <button data-scale="0.5">0.5</button>
+        <button data-scale="0.01">0.01</button>
+        <button data-scale="1.2">1.2</button>
+    </div>
+    <script>
+        let fontSize = 0
+        function fn(){
+            console.log(window.devicePixelRatio);
+            fontSize = (document.documentElement.clientWidth*100)/375 + "px"
+            document.documentElement.style.fontSize = fontSize
+        }
+        window.onresize = fn
+        fn()        
+        app.innerHTML = `${fontSize}<br>${document.documentElement.clientWidth}<br>${document.querySelector("html").children[0].children[1].content}`
+        window.onload = function () {
+            document.querySelector("#button").addEventListener("click", function (e) {
+                let target = e.target
+                if (e.target.nodeName === "BUTTON") {
+                    document.querySelector("html").children[0].children[1].content = "initial-scale=" + target.dataset.scale
+                    app.innerHTML = `${fontSize}<br>${document.documentElement.clientWidth}<br>${document.querySelector("html").children[0].children[1].content}`
+
+
+                }
+            })
+            document.querySelector("html").children[0].children[1].content
+        }
+    </script>
+</body>
+
+</html>

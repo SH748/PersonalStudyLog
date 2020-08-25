@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defineProperty</title>
+</head>
+
+<body>
+    <script>
+        const kuiba = {
+            m1: "十万火急",
+            m2: "大战元泱界",
+            m3: "战神崛起",
+        }
+
+        Object.defineProperty(kuiba, "damai", {
+            configurable: false,
+            enumerable: false,
+            get() {
+                return this["m" + Math.ceil(Math.random() * 3)];
+            },
+        })
+        console.log(kuiba.damai);
+
+
+    </script>
+</body>
+
+</html>

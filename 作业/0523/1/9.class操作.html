@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class操作</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="bg">
+        <p :class="primary">Lorem ipsum dolor sit amet, consectetur adipisicing ept. Blanditiis, expedita?</p>
+        <p :class="{'bg-success':isFlag}">Lorem ipsum dolor sit amet, consectetur adipisicing ept. Blanditiis, expedita?
+        </p>
+        <p :class="[info,danger]">Lorem ipsum dolor sit amet, consectetur adipisicing ept. Blanditiis, expedita?</p>
+        <p class="text-success" :class="warning">Lorem ipsum dolor sit amet, consectetur adipisicing ept. Blanditiis,
+            expedita?</p>
+        <button class="btn btn-info" @click="isFlag = !isFlag">点我试试</button>
+        <p :class="{'bg-danger':isFlag,'text-info':isFlag}">Lorem ipsum dolor sit amet, consectetur adipisicing ept.
+            Blanditiis,
+            expedita?
+        </p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#bg",
+            data: {
+                primary: "bg-primary",
+                success: "bg-success",
+                isFlag: "false",
+                info: "bg-info",
+                warning: "bg-warning",
+                danger: "text-danger",
+            }
+        })
+    </script>
+</body>
+
+</html>

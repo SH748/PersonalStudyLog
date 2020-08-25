@@ -1,0 +1,53 @@
+@proportion: 375/100vw;
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+
+    body {
+        width: 100%;
+        height: 100%;
+
+        #app {
+            width: 300/@proportion;
+            height: 195/@proportion;
+            background-color: lightblue;
+            margin: 0 auto;
+            font-size: 0.25rem;
+            border: 1px solid black;
+        }
+
+        #button {
+            button {
+                width: 12px;
+            }
+        }
+
+        @media screen and (-webkit-device-pixel-ratio:2) {
+            #app {
+                width: 300/@proportion;
+                height: 195/@proportion;
+                background-color: lightblue;
+                margin: 0 auto;
+                font-size: 0.25rem;
+                border: 0.5px solid black;
+            }
+        }
+
+        @media screen and (-webkit-device-pixel-ratio:0.1) {
+            #app {
+                width: 300/@proportion;
+                height: 195/@proportion;
+                background-color: lightblue;
+                margin: 0 auto;
+                font-size: 0.25rem;
+                border: 10px solid black;
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      width: 100vw;
+      height: 100vh;
+      background-color: #f6e58d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    main,div{
+      transition: .5s;
+    }
+    main:hover div{
+      cursor: pointer;
+      transform: scale(.8) translateY(-30px);
+      filter: blur(15px);
+    }
+    main::after{
+      content: "";
+      display: block;
+      clear: both;
+      height: 0;
+    }
+    main div{
+      margin-right:30px ;
+      width: 115px;
+      height: 161px;
+      background-color:#ffbe76 ;
+      display: inline-block;
+    }
+    main div:hover {
+        transform: scale(1.2);
+        color: white;
+        filter: none;
+        z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div></div>
+    <div></div>
+    <div></div>
+  </main>
+</body>
+
+</html>

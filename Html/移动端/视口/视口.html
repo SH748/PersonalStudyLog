@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视口问题</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 32px;
+        }
+
+        #app {
+            width: 100%;
+            /* width: 1100px; */
+            height: 500px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        function fn() {
+
+            console.log("理想视口", document.documentElement.clientWidth);
+            console.log("浏览器不包括边框的内部宽度", window.innerWidth);
+            console.log("浏览器包括边框在内的宽度", window.outerWidth);
+            console.log("屏幕显示分辨率", screen.width);
+        }
+        window.onreset = fn
+        fn()
+        document.querySelector("#app").innerHTML = `"理想视口",${document.documentElement.clientWidth}<br>
+        "浏览器不包括边框的内部宽度",${window.innerWidth}<br>
+        "浏览器包括边框在内的宽度",${window.outerWidth}<br>
+        "屏幕显示分辨率",${screen.width}
+        `
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <fieldset>
+            <legend>更新位置</legend>
+            <label for="">一<input type="text" v-model="first" /></label><br>
+            <label for="">二<input type="text" v-model="second" /></label><br>
+            <label for="">三<input type="text" v-model="third" /></label><br><br>
+            <button @click="add">新增</button> <button @click="sureUpdate">确认修改</button>
+        </fieldset>
+        <ul>
+            <li v-for="(item,index) in persons" :key="item.id">
+                {{index}}----{{item.id}}----{{item.first}}-----{{item.second}}-----{{item.third}}
+                <button @click="update(index)">修改</button>
+                <button @click="del(index)">删除</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                first: '',
+                second: '',
+                third: '',
+                perId: 6,
+                updateId: null,
+                persons: [
+                    { id: 2, first: '自来也', second: 39, third: '比较值得尊敬的男人' },
+                    { id: 1, first: '卡卡西', second: 28, third: '比较帅气的男人' },
+                    { id: 3, first: '大蛇丸', second: 37, third: '强大的科学家' },
+                    { id: 4, first: '强哥', second: 47, third: '极其猥琐的男人' },
+                    { id: 5, first: '华哥', second: 46, third: '极其龌蹉的男人' }
+                ]
+            },
+            methods: {
+                add() {
+                    const { first, second, third } = this;
+                    this.persons.push({ id: this.perId, first, second, third })
+                },
+                del(index) {
+                    this.persons.splice(index, 1);
+                },
+                update(index) {
+                    this.updateId = index;
+                    this.first = this.persons[index].first;
+                    this.second = this.persons[index].second;
+                    this.third = this.persons[index].third;
+                },
+                sureUpdate() {
+                    console.log(this.updateId);
+
+                    if (this.updateId) {
+                        console.log(this.persons[this.updateId]);
+
+                        this.persons[this.updateId].first = this.first;
+                        this.persons[this.updateId].second = this.second;
+                        this.persons[this.updateId].third = this.third;
+
+                    }
+                    this.updateId = null;
+                    this.first = "";
+                    this.second = "";
+                    this.third = "";
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

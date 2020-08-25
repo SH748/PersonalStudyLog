@@ -1,0 +1,122 @@
+@basefontsize : 375/10rem;
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    background: #eee;
+    header {
+        box-sizing: border-box;
+        width:375/@basefontsize;
+        height:75/@basefontsize;
+        font-size:20/@basefontsize;
+        font-weight:bold;
+        font-family: PingFangSC-Regular,Arial,sans-serif;
+        text-align:center;
+        line-height:75/@basefontsize;
+    }
+    section {
+        width:100%;
+        height:auto;
+        overflow: hidden;
+        box-sizing: border-box;
+        .item {
+            width:343/@basefontsize;
+            height:175/@basefontsize;
+            margin:0 auto;
+            box-sizing: border-box;
+            border-radius:7.5px;
+            padding: 16/@basefontsize 17/@basefontsize 17/@basefontsize 12/@basefontsize;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom:15/@basefontsize
+        }
+    }
+    
+    .bg {
+        background: #388dcf;
+    }
+
+    .bg2 {
+        background: lightblue;
+    }
+
+    .pull-left {
+        float: left;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .pull-right {
+        float: right;
+    }
+
+    .top .logo {
+        width: 39px;
+        height: 39px;
+        border-radius: 50%;
+    }
+
+    .top .title {
+        color: white;
+    }
+
+    .top .title .bank {
+        font-size: 17px;
+        font-weight: bold;
+        line-height: 17px;
+    }
+
+    .top .title .card-type {
+        font-size: 14px;
+        padding-top: 4px;
+    }
+
+    .top .cardID {
+        padding-top: 8px;
+        color: white;
+        font-family: PingFangSC-Regular, Arial, sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .bottom {
+        color: white;
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .hide {
+        color: #afc4e6;
+    }
+
+    .jianhang {
+        background: linear-gradient(to bottom right, #398cce, #3864be);
+        box-shadow: 0 0 3px #3864be;
+    }
+
+    .zhaoshang {
+        background: linear-gradient(to bottom right, #ff7566, #ff5262);
+        box-shadow: 0 0 3px #ff5262;
+    }
+
+    .wangshang {
+        background: linear-gradient(to bottom right, #01aa9a, #028caf);
+        box-shadow: 0 0 3px #028caf;
+    }
+
+    .nonghang {
+        background: linear-gradient(to bottom right, #438A4E, #0C4139);
+        box-shadow: 0 0 3px #0C4139;
+    }
+
+    .jiaotong {
+        background: linear-gradient(to bottom right, #A49264, #A58671);
+        box-shadow: 0 0 3px #A58671;
+    }
+}

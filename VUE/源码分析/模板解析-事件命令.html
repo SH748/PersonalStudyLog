@@ -9,7 +9,7 @@
     <div id="app">
         <button v-on:click="cc" v-bind:class="msg">点击</button>
         <div>{{aa}}</div>
-        <div>{{aa}}</div>
+        <div>{{abc.d}}</div>
     </div>
     <script src="./js/mvvm.js"></script>
     <script src="./js/compile.js"></script>
@@ -21,11 +21,14 @@
         let mm = new  MVVM({
             el:'#app',
             data:{
-                msg:'123'
+                msg:'123',
+                abc:{
+                    d:1
+                }
             },
             methods:{
                 cc(){
-                    console.log(11)
+                    this.abc.d++
                 }
             },
             computed:{

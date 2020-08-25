@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <button v-on:click="add">点击</button>
+        <h2>id</h2>
+        <ul>
+            <li v-for="item in list" :key="item.id">
+                {{item.id}}---{{item.content}}----<input type="text" />
+            </li>
+        </ul>
+        <h2>index</h2>
+        <ul>
+            <li v-for="(item,index) in list" :key="index">
+                {{item.id}}---{{item.content}}----<input type="text" />
+
+            </li>
+        </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: 1, content: "a" },
+                    { id: 2, content: "b" },
+                    { id: 2, content: "f" },
+                    { id: 3, content: "c" }
+                ]
+            },
+            methods: {
+                add: function () {
+                    console.log('11');
+                    this.list.unshift({ id: 4, content: "d" })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

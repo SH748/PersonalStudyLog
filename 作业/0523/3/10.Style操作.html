@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style操作</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="海水">
+        <p :style="{color:myColor,fontSize:mySize}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla,
+            vero.</p>
+        <p :style="[areYouOK,mypeizhi]">曾经沧海难为水，除却巫山不是云.....他乡咸鸭蛋，我实在吃不惯
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#海水",
+            data: {
+                myColor: 'yellowgreen',
+                mySize: '3em',
+                areYouOK: { fontSize: "33px", fontFamily: "华文新魏" },
+                mypeizhi: { color: "#dbae03" }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

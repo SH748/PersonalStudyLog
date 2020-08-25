@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <pre>
+            1.v-text:将内容以文本形式展现，浏览器不会解析其中的Html标签
+            2.v-html:将内容以代码形式展现，浏览器会解析其中的Html标签
+        </pre>
+        <p v-text="'v-text:'+a"></p>
+        <p v-html="'v-html:'+a"></p>
+    </div>
+    <script>const app = new Vue({
+            el: '#app', data: {
+                a: '<a href="https://www.bilibili.com">BILIBILI</a>'
+            }
+        })</script>
+</body>
+
+</html>

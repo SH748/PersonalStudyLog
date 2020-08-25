@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>v-if&v-show</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="a66">
+        <fieldset>
+            <legend>v-if</legend>
+            <button @click="btn1">显示隐藏</button><button @click="isSeen=!isSeen">显示隐藏</button>
+            <p v-if="isSeen">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p v-else>Lorem ipsum dolor sit.</p>
+        </fieldset>
+        <fieldset>
+            <legend>v-show</legend>
+            <button @click="btn2">显示隐藏</button>
+            <p v-show="isShow">Just display = {{isShow?"blcok":"none"}}</p>
+        </fieldset>
+
+    </div>
+    <script>
+        Vue.config.devtools = true;
+        new Vue({
+            el: "#a66",
+            data: {
+                isSeen: true,
+                isShow: false,
+            },
+            methods: {
+                btn1: function () {
+                    this.isSeen = !this.isSeen;
+                },
+                btn2: function () {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

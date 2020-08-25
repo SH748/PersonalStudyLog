@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向数据绑定</title>
+    <script src="../js/vue.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap-grid.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="lala" class="container">
+        <input type="text" v-model="ad" class="input-group-addon">
+        <p>{{ad}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#lala",
+            data: {
+                ad: "aaa"
+            }
+        })
+
+    </script>
+</body>
+
+</html>

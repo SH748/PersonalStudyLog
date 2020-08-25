@@ -52,8 +52,18 @@ white-space:/*非nowrap即可*/
 /*2.隐藏*/
 overflow:hidden;
 /*3.省略*/
-text-overflow:ellipssis;
+text-overflow:ellipsis;
 ```
+
+==文本移除省略 常用==
+
+```css
+white-space: nowrap;
+overflow:hidden;
+text-overflow: ellipsis;
+```
+
+
 
 > **`white-space`** CSS 属性是用来设置如何处理元素中的 [空白](https://developer.mozilla.org/en-US/docs/Glossary/whitespace)。
 
@@ -287,7 +297,8 @@ p[title|="aaa"]{}/*p标签中title属性值以aaa单词开始的，或则以aaa�
   * :last-child
   * ………
 
-  
+
+
 
 ## CSS权重
 
@@ -350,7 +361,7 @@ div{
 
 * 继承规则没有权重 null 无权重小于0权重
 
-
+-----------------
 
 ## 盒子模型
 ### 盒子模型图
@@ -552,6 +563,8 @@ outline:solid 3px gray;
 outline:none;
 ```
 
+---------
+
 ## Float 元素浮动
 
 ### 为元素开启浮动
@@ -680,5 +693,12 @@ Hook 是向下兼容的。本页面为有经验的 React 用户提供一个对 H
 * 语法：
   * position:absolute
 * 特点
-  * 
+
+
+
+## 变形动画
+
+###
+
+
 

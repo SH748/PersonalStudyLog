@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>v-if&v-show</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="kuiba">
+        <fieldset>
+            <legend>kuiba</legend>
+            <button @click="btn1">票房大卖</button><button @click="kuiab=!kuiab">票房大卖</button>
+            <p v-if="kuiab">魁拔加油</p>
+            <p v-else>十万火急</p>
+        </fieldset>
+        <fieldset>
+            <legend>魁拔</legend>
+            <button @click="btn2">显示隐藏</button>
+            <p v-show="isShow">最后的魁拔</p>
+        </fieldset>
+
+    </div>
+    <script>
+        Vue.config.devtools = true;
+        new Vue({
+            el: "#kuiba",
+            data: {
+                kuiab: true,
+                isShow: false,
+            },
+            methods: {
+                btn1: function () {
+                    this.kuiab = !this.kuiab;
+                },
+                btn2: function () {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

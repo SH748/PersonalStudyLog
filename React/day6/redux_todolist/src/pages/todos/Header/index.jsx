@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
-import { Input,Button } from 'element-react'
+import {Input,Button} from "antd"
+import 'antd/dist/antd.css'
 import 'element-theme-default'
 export class index extends Component {
     render() {

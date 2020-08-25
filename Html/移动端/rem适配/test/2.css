@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  background: #eee;
+}
+body header {
+  box-sizing: border-box;
+  width: 10rem;
+  height: 2rem;
+  font-size: 0.53333333rem;
+  font-weight: bold;
+  font-family: PingFangSC-Regular, Arial, sans-serif;
+  text-align: center;
+  line-height: 2rem;
+}
+body section {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+body section .item {
+  width: 9.14666667rem;
+  height: 4.66666667rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 7.5px;
+  padding: 0.42666667rem 0.45333333rem 0.45333333rem 0.32rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+body .bg {
+  background: #388dcf;
+}
+body .bg2 {
+  background: lightblue;
+}
+body .pull-left {
+  float: left;
+}
+body .clear {
+  clear: both;
+}
+body .pull-right {
+  float: right;
+}
+body .top .logo {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+}
+body .top .title {
+  color: white;
+}
+body .top .title .bank {
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 17px;
+}
+body .top .title .card-type {
+  font-size: 14px;
+  padding-top: 4px;
+}
+body .top .cardID {
+  padding-top: 8px;
+  color: white;
+  font-family: PingFangSC-Regular, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+body .bottom {
+  color: white;
+  text-align: right;
+  font-size: 14px;
+}
+body .hide {
+  color: #afc4e6;
+}
+body .jianhang {
+  background: linear-gradient(to bottom right, #398cce, #3864be);
+  box-shadow: 0 0 3px #3864be;
+}
+body .zhaoshang {
+  background: linear-gradient(to bottom right, #ff7566, #ff5262);
+  box-shadow: 0 0 3px #ff5262;
+}
+body .wangshang {
+  background: linear-gradient(to bottom right, #01aa9a, #028caf);
+  box-shadow: 0 0 3px #028caf;
+}
+body .nonghang {
+  background: linear-gradient(to bottom right, #438A4E, #0C4139);
+  box-shadow: 0 0 3px #0C4139;
+}
+body .jiaotong {
+  background: linear-gradient(to bottom right, #A49264, #A58671);
+  box-shadow: 0 0 3px #A58671;
+}

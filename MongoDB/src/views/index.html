@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>minweibo</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.css" rel="stylesheet">
+  <style>
+    body {
+      font-size: 16px
+    }
+    .up,.down,.del{
+      display: inline-block;
+      cursor:pointer;
+      width: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <div class="alert" :class="{'alert-success':addResult,'alert-danger':!addResult}" v-if="showResult" role="alert">
+      {{ResultMsg}}</div>
+    <div class="jumbotron" style="background-color: lightblue;">
+      <textarea class="form-control" name="" id="" cols="30" rows="10" v-model="content" placeholder="发表你的看法">
+
+      </textarea>
+      <p><button type="button" class="btn btn-primary btn-lg" @click="addWeibo">提交评论</button></p>
+    </div>
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Panel heading</div>
+      <!-- List group -->
+      <ul class="list-group">
+        <li class="list-group-item" v-for="item in commentsList" style="text-align: right;"> 
+          <div style="text-align: left;">{{item.content}}
+          <p>{{item.createTime|dateFormat}}</p>
+          </div> 
+          <span @click="upordown" class="up">赞:{{item.upNum}}</span>
+          <span @click="upordown" class="down">踩:{{item.downNum}}</span>
+          <span @click="del" class="del">删除</span>
+        </li>
+      </ul>
+      <div >
+        <nav aria-label="Page navigation">
+          <ul class="pagination pagination-lg">
+            <li v-for="item in countPage" :class={active:item===pageIndex}><a href="#">{{item}}</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script src="/js/vue.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0-0/axios.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue中的计算属性</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend> 开始 </legend>
+            <label for="">xing <input type="text" name="xing" v-model="xing"></label><br><br>
+            <label for="">ming <input type="text" name="ming" v-model="ming"></label>
+        </fieldset>
+        <fieldset>
+            <legend> B </legend>
+            <label for="">TypeA <input type="text" name="typeA" v-model="typeA"></label><br>
+            <label for="">TypeB <input type="text" name="typeB" v-model="typeB"></label><br>
+            <label for="">TypeC <input type="text" name="typeC" v-model="typeC"></label>
+        </fieldset>
+    </div>
+
+    <script>
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                xing: "first",
+                ming: "last",
+                typeB: ""
+            },
+            computed: {
+                typeA: function () {
+                    return this.first + " " + this.last;
+                },
+                typeC: {
+                    get() {
+                        return this.first + " " + this.last;
+                    },
+                    set(val) {
+                        let li = val.split(" ");
+                        this.first = li[0];
+                        this.last = li[1];
+                    }
+                }
+            },
+            watch: {
+                first(val) {
+                    this.typeB = val + " " + this.last;
+                }
+            }
+        })
+        vm.$watch("last", function (val) {
+            this.typeB = this.first + " " + val;
+        })
+    </script>
+</body>
+
+</html>

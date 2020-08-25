@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>v-if&v-show</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="a66">
+        <fieldset>
+            <legend>v-if</legend>
+            <button @click="btn1">显示隐藏</button><button @click="isSeen=!isSeen">显示隐藏</button>
+            <p v-if="isSeen"><img
+                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590311648783&di=3c8144e769ef6c3b2faa7a2d70007210&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F19%2F20170719165143_irxUZ.thumb.700_0.gif"
+                    alt=""></p>
+            <p v-else><img
+                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590311710938&di=0a8b3f0a55db2c038a28592c8a86d68d&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fc2668cb7b82e6bc9ea80f121997014d9bc47b400.gif"
+                    alt=""></p>
+        </fieldset>
+        <fieldset>
+            <legend>v-show</legend>
+            <button @click="btn2">显示隐藏</button>
+            <p v-show="isShow"><img
+                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590311710938&di=0a8b3f0a55db2c038a28592c8a86d68d&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fc2668cb7b82e6bc9ea80f121997014d9bc47b400.gif"
+                    alt=""></p>
+        </fieldset>
+
+    </div>
+    <script>
+        Vue.config.devtools = true;
+        new Vue({
+            el: "#a66",
+            data: {
+                isSeen: true,
+                isShow: false,
+            },
+            methods: {
+                btn1: function () {
+                    this.isSeen = !this.isSeen;
+                },
+                btn2: function () {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

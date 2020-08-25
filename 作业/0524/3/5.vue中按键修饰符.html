@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <input type="text" @keyup="keyUpHandle1($event)">
+        <input type="text" @keyup.enter="keyUpHandle2">
+        <input type="text" @keyup.13="keyUpHandle3">
+        <div style="width: 300px; height: 300px; background-color: darkslateblue;">
+            <button style="cursor: pointer;" @click.Ctrl="keyUpHandle4">没效果？</button>
+        </div>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                keyUpHandle1(e) {
+                    if (event.keyCode === 13) {
+                        alert(1);
+                    }
+                },
+                keyUpHandle2() {
+                    alert(2)
+                },
+                keyUpHandle3() {
+                    alert(3)
+                },
+                keyUpHandle4() {
+                    alert(4)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

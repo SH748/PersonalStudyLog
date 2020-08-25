@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defineProperty</title>
+</head>
+
+<body>
+    <script>
+        const haokande = {
+            firstName: "斋藤",
+            lastName: "飞鸟"
+        }
+
+        Object.defineProperty(haokande, "fullname", {
+            configurable: false,
+            enumerable: false,
+            get() {
+
+                return this.firstName + this.lastName;
+            },
+        })
+        haokande.firstName = "杨";
+        haokande.lastName = "超越";
+        console.log(haokande.fullname);
+
+
+    </script>
+</body>
+
+</html>

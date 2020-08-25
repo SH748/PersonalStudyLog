@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem适配方案</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 3.45rem;
+            height: 2rem;
+            background-color: lightblue;
+            margin: 15px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        function fn(){
+            const fontSzie = (document.documentElement.clientWidth*100)/375
+            document.querySelector("html").style.fontSize=fontSzie+"px"
+        }
+        window.onresize = fn
+        fn()
+    </script>
+</body>
+</html>

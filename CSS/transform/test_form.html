@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>渐变表单</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    body{
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      background-color: blueviolet;
+    }
+    .container{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 300px;
+      /* background-color: burlywood; */
+    }
+    .inputbox{
+      margin-bottom: 10px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .inputbox::after{
+      content: "";
+      display: block;
+      width: 150px;
+      height: 1px;
+      background:linear-gradient(to right,#f6e58d,#7ed6df,#686de0,#f0932b,#eb4d4b,#f9ca24) ;
+      transform: translateY(-130%)translateX(-100%);
+      transition: 2s;
+    }
+    .inputbox:hover::after{
+      transform: translateY(-130%)translateX(300px);
+    }
+    input{
+      width: 100%;
+      line-height: 40px;
+      background-color: transparent;
+      text-indent: 1em;
+      border: none;
+      outline: none;
+      font-size: 20px;
+      border-bottom: 1px solid lightblue;
+      color: lightblue;
+    }
+    input::-webkit-input-placeholder{
+      color: #fff;
+      font-size: 20px;
+      opacity: .8;
+      line-height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="inputbox">
+      <input type="text" placeholder="xxxx">
+    </div>
+    <div class="inputbox">
+      <input type="text" placeholder="xxxx">
+    </div>
+  </div>
+</body>
+
+</html>

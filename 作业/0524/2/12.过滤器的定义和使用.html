@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>每天都被自己帅醒!</title>
+    <link rel="stylesheet" href="">
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h2>显示格式化的日期时间</h2>
+        <h2>{{time}}</h2>
+        <h2>{{time|formatTime1}}</h2>
+        <h2>{{time|formatTime2("hh-mm-ss")}}</h2>
+        <h2>{{'2020-1-1 1:0:0'|formatTime2}}</h2>
+
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+    <script type="text/javascript">
+
+
+        // 定义过滤器(手动定义)
+        Vue.filter('formatTime1', (value) => {
+            // value---->要进行过滤的字符数据,value--time
+            return moment(value).format('YYYY-MM-DD hh:mm:ss');
+
+        })
+        Vue.filter('formatTime2', (value, formatString = 'hh:mm:ss') => {
+            // value---->要进行过滤的字符数据,value--time
+            return moment(value).format(formatString);
+
+        })
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                time: Date.now()
+            }
+        })
+        /**
+		 * 过滤器:对要显示的数据进行特定格式化再显示
+		 * 定义:
+		 * Vue.Filter(filterName,function(value,[arg1,...]){
+		 * return newValue
+		 * })
+		 * 使用: | 前面的变量会被当做过滤器调用时的第一个参数(value)传入 ,也可以是字符串
+		 * {{value|filterName}}
+		 * {{value|filterName(arg)}}
+		*/
+
+    </script>
+</body>
+
+</html>

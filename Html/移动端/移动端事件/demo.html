@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端事件</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .demo {
+            width: 100%;
+            height: 50%;
+            background-color: lightblue;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo"></div>
+    <script>
+        window.onload = function () {
+            const demo = document.querySelector(".demo")
+            demo.addEventListener("touchsttart", function () {
+                this.style.background = "lightcoral"
+                this.innerHTML += "按下<br>"
+            })
+            demo.addEventListener("touchmove", function () {
+                this.innerHTML += "移动<br>"
+            })
+            demo.addEventListener("touchend", function () {
+                this.innerHTML += "跑路<br>"
+            })
+            let time ;
+            demo.addEventListener("touchstart",function(){
+                time = Date.now()
+            })
+            demo.addEventListener("click",function(){
+                this.innerHTML += Date.now() - time
+            })
+        }
+    </script>
+</body>
+
+</html>

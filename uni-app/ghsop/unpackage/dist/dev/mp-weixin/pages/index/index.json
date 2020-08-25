@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "首页",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "recommend": "/components/recommend/index",
+    "cate-list": "/components/cateList/cateList"
+  }
+}

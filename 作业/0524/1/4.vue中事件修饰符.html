@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+    <style>
+        #app>div {
+            width: 300px;
+            height: 300px;
+            background-color: darkcyan;
+        }
+
+
+        #app>div>div {
+            width: 200px;
+            height: 200px;
+            background-color: darksalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <h2>默认事件</h2>
+        <a href="https://www.baidu.com" @click="yuan($event)">百度</a>
+        <a href="https://www.baidu.com" @click.prevent="vuePre">百度</a>
+        <h2>冒泡</h2>
+        <div @click="div1">
+            <div @click="div2($event)"></div>
+        </div>
+        <hr>
+        <div @click="div1">
+            <div @click.stop="div2($event)"></div>
+        </div>
+
+    </div>
+    <script>const app = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                yuan(e) {
+                    console.log('a1被点击');
+                    e.preventDefault();
+                },
+                vuePre() {
+                    console.log('a2被点击');
+
+                },
+                div1() {
+                    console.log('div1被点击');
+
+                },
+                div2(e) {
+                    console.log('div2被点击');
+                    e.stopPropagation();
+                },
+                div3() {
+                    console.log('div3被点击');
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

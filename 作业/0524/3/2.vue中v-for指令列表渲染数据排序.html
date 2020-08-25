@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id='app'>
+        <input type="text" placeholder="seach">
+        <ul>
+            <li v-for="(item,index) in newArr" :key="item.id">
+                索引:{{index}}---id:{{item.id}}----名字:{{item.name}}----年龄:{{item.age}}
+            </li>
+        </ul>
+        <button @click="status =1">升序</button>
+        <button @click="status = 2">降序</button>
+        <button @click="status = 0">原序</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                status: 0,
+                seach: "",
+                persons: [
+                    { id: 1, name: 'jack', age: 23 },
+                    { id: 2, name: 'tom', age: 47 },
+                    { id: 3, name: 'lucy', age: 14 },
+                    { id: 4, name: 'rousi', age: 78 },
+                    { id: 5, name: 'alibaba', age: 99 }
+                ]
+            },
+            computed: {
+                newArr() {
+                    const { status, seach, persons } = this;
+                    const newArr = persons.filter((item) => item.name.toLowerCase().indexOf(seach.toLowerCase()) !== -1);
+                    newArr.sort((f, s) => {
+                        return status === 2 ? s.age - f.age : f.age - s.age;
+                    })
+                    return newArr;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

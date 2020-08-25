@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='../js/vue.min.js'></script>
+    <style type="text/css">
+        p {
+            background-color: green;
+            width: 100px;
+            text-align: center;
+        }
+
+        .myFade-enter-active,
+        .myFade-leave-active {
+            transition: all 3s;
+        }
+
+        .myFade-enter,
+        .myFade-leave-to {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <button @click="isShow=!isShow">实现过渡的效果练习</button>
+        <transition name="myFade">
+            <p v-show="isShow">这是一个p</p>
+        </transition>
+    </div>
+    <script>const app = new Vue({
+            el: '#app', data: {
+                isShow: false
+            }
+        })</script>
+</body>
+
+</html>

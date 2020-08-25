@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style操作</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="nihao">
+        <p :style="{color:myColor,fontWeight:weight}">Lorem, ipsum dolor.</p>
+        <p :style="[myFont,mypeizhi]">落霞与孤鹜齐飞，秋水共长天一色
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#nihao",
+            data: {
+                myColor: 'darkcyan',
+                weight: "600",
+                myFont: { fontSize: "25px", fontFamily: "华文行楷" },
+                mypeizhi: { color: "pink" }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

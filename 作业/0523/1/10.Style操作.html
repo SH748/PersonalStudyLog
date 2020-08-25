@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style操作</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="ap">
+        <p :style="{color:myColor,fontSize:mySize}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla,
+            vero.</p>
+        <p :style="[myFont,mypeizhi]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, vero.要想生活多的去，就得这个色
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#ap",
+            data: {
+                myColor: 'red',
+                mySize: '18px',
+                myFont: { fontSize: "25px", fontFamily: "华文行楷" },
+                mypeizhi: { color: "green" }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

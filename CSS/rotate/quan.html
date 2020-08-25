@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background-color: blueviolet;
+    }
+
+    main {
+      width: 500px;
+      height: 500px;
+      position: relative;
+    }
+
+    i {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      box-shadow: 0 0 10px #fff;
+      /* transform: translate(20px, 20px); */
+      /* margin: 0 5px; */
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+  </main>
+</body>
+<script>
+  window.onload = function () {
+    let is = document.getElementsByTagName("i")
+    console.log(is);
+    for (let i = 0; i < is.length; i++) {
+      is[i].style.transform = ` rotateX(${i * 36}deg)`
+    }
+  }
+</script>
+
+</html>

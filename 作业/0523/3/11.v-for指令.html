@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for指令</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="asd">
+        <ul v-for="(item,index) in data1">
+            <li :key="item">
+                {{index}}--------{{item}}
+            </li>
+        </ul>
+        <ul v-for="(item,index) in data1.c">
+            <li>
+                {{index}}--------{{item}}
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#asd",
+            data: {
+                data1: ["a", "b", "c"]
+            }
+        })
+
+    </script>
+</body>
+
+</html>

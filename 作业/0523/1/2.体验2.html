@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体验2入</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="abc">
+        <h2>{{td}}</h2>
+        <input type="text" style="width: 100%;" v-model="td">
+    </div>
+    <script>
+        new Vue({
+            el: "#abc",
+            data: {
+                td: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, officia."
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参数顺序</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: #dedede;
+    }
+    main{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    main .one{
+      width: 35%;
+      height: 60%;
+      /* border: 1px solid #dedede; */
+      background-color: blueviolet;
+      margin-bottom: 30px;
+      opacity: .2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 5px #000;
+    }
+    #first,#second,#third{
+      width: 200px;
+      height: 260px;
+      background-color: transparent;
+      transition: 2s linear;
+      /* transform: perspective(900px); */
+      transform-style: preserve-3d;
+      text-align: center;
+    }
+    #first:hover{
+      transform: perspective(900px) rotateX(360deg);
+    }
+    #first>div,#second>div{
+      width: 100%;
+      height: 100%;
+      transform: perspective(10px);
+      backface-visibility:visible
+    }
+    #first>div:nth-child(1),
+    #third>div:nth-child(1),
+    #second>div:nth-child(1)
+    {
+      background-color: cadetblue;
+      transform: translateZ(3px);
+      z-index: 3;
+    }
+    #first>div:nth-child(2),
+    #second>div:nth-child(2)
+    {
+      background-color: coral;
+      z-index: 1;
+      transform: translate3d(0,-100%,3px);
+    }
+    #third>div{
+      width: 100%;
+      height: 50%;
+    }
+    #third>div:nth-child(2){
+      background-color: coral;
+    }
+
+    #second:hover{
+      transform:   rotateY(360deg);
+
+    }
+    #third:hover{
+      transform: rotateZ(360deg);
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="one">
+      <div id="first">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="one">
+      <div id="second">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="one">
+      <div id="third">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="one"></div>
+    <div class="one"></div>
+    <div class="one"></div>
+  </main>
+</body>
+
+</html>

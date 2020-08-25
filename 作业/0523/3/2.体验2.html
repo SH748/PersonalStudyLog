@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体验2入</title>
+    <script src="../js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="text">
+        <h2>{{content}}</h2>
+        <textarea rows="10" cols="10" type="text" style="width: 100%;" v-model="content"> </textarea>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#text",
+            data: {
+                content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eveniet voluptatum illum aliquid ducimus sequi vel mollitia eligendi, quidem doloribus saepe accusantium libero officia repudiandae illo iste quis facilis, tenetur sint debitis! Molestias cum, totam, pariatur obcaecati aperiam, hic excepturi esse ducimus dolores illo saepe ex ratione tempora dolor? Incidunt quae dignissimos odit rerum magnam quia eum fugit deleniti dicta corrupti eligendi, iste dolores quas accusantium illo a. Voluptas eos error odit corporis eligendi ipsum. Ea consectetur soluta fugit est sed, animi atque mollitia nostrum necessitatibus laudantium. Ad fugit commodi, veniam esse maiores a voluptate impedit corporis asperiores. Minima, consectetur."
+            }
+        })
+    </script>
+</body>
+
+</html>

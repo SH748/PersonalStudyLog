@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="initial-scale=2.0"> -->
+    <meta name="viewport" content="initial-scale=2">
+    <title></title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="button">
+        <button data-scale="1">1</button>
+        <button data-scale="2">2</button>
+        <button data-scale="0.5">0.5</button>
+        <button data-scale="0.8">0.8</button>
+        <button data-scale="1.2">1.2</button>
+    </div>
+    <script>
+         app.innerHTML = `${document.documentElement.clientWidth}<br>${document.querySelector("html").children[0].children[1].content}`
+        console.dir(document.documentElement.clientWidth,document.documentElement.clientHeight);
+        window.onload = function () {
+            document.querySelector("#button").addEventListener("click", function (e) {
+                console.dir(e.target);
+                let target = e.target
+                if (e.target.nodeName === "BUTTON") {
+                    document.querySelector("html").children[0].children[1].content = "initial-scale=" + target.dataset.scale
+                    app.innerHTML = `${document.documentElement.clientWidth}<br>${document.querySelector("html").children[0].children[1].content}`
+
+
+                }
+            })
+            document.querySelector("html").children[0].children[1].content
+        }
+    </script>
+</body>
+
+</html>

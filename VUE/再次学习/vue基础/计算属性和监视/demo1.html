@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{test}}</h1>
+        <hr>
+        <label>first: <input type="text" name="first" v-model="first"></label><br>
+        <label>second: <input type="text" name="second" v-model="second"></label><br>
+        <label>单向绑定-computed: <input type="text" name="first" v-model="fullname"></label><br>
+        <label>双向绑定-watch: <input type="text" name="first" v-model="fullname2"></label><br>
+        <label>双向绑定-computed: <input type="text" name="first" v-model="fullname3"></label>
+    </div>
+    <script src="../js/vue.min.js"></script>
+    <script>
+        window.onload = function () {
+            const vm = new Vue({
+                el: "#app",
+                data: {
+                    first: "A",
+                    second: "B",
+                    fullname2: "A B"
+                },
+                computed: {
+                    test() {
+                        return "computed study"
+                        /* computed computed computed computed computed computed computed computed computed */
+                    },
+                    fullname() {
+                        return this.first + " " + this.second
+                    },
+                    fullname3: {
+                        get() {
+                            return this.first + " " + this.second
+                        },
+                        set(val) {
+                            let arr = val.split(" ")
+                            this.first = arr[0]
+                            this.second = arr[1]
+                        }
+                    }
+                },
+                watch: {
+                    first(val) {
+                        this.fullname2 = val + " " + this.second
+                    },
+                    fullname2(val) {
+                        let arr = val.split(" ")
+                        this.first = arr[0]
+                        this.second = arr[1]
+                    },
+
+                }
+            })
+            vm.$watch("second", function (val) {
+                this.fullname2 = this.first + " " + val
+            })
+        }
+    </script>
+</body>
+
+</html>

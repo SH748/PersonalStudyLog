@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        pre{
+            padding: 10px;
+            color: white;
+            white-space: pre-wrap;
+            font-size: 16px;
+            font-weight: 600;
+            width: 500px;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    bus.on()给实例添加方法
+    bus.emit()调用添加的方法
+    bus.off()删除方法
+    给Bus原型添加一个属性bus,bus是Bus的实例
+    这样就可以使得所有的Bus实例都有一个属性bus，所有Bus实例需要共有通信的方法添加给原型中的bus，其他的实例需要调用时，只需要访问this.bus.xxx即可
+</pre>
+
+    <script src="./Bus.js"></script>
+    <script >
+        let b1 = new Bus();
+        b1.on("f1",function(){
+            console.log('f1-1');
+        })
+        b1.on("f1",function(){
+            console.log('f1-2');
+        })
+        b1.emit("f1")
+        
+        let b2 = new Bus();
+        b2.on('f2',function(){
+            console.log('f2-1');
+            
+        })
+        
+        let bus = Bus.prototype.bus = new Bus();
+        console.log(b1.bus === bus);
+        
+
+    </script>
+</body>
+</html>

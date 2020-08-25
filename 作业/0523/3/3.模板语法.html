@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <script src="../js/vue.min.js"></script>
+    <style>
+        img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lala">
+        <!--模板-->
+        <p>{{msg}}</p>
+        <p>{{msg.split("")}}</p>
+        <p>{{msg.slice(2,-5)}}</p>
+        <hr>
+        <!--强制数据绑定-->
+        <img :src="img1" :alt="imgVal1">
+        <img :src="img2" :alt="imgVal2">
+        <img :src="img3" :alt="imgVal3">
+        <hr>
+        <!--vue事件监听-->
+        <button @click="click">魁拔魁拔魁拔</button>
+        <p ref="p"></p>
+    </div>
+    <script>
+        new Vue({
+            el: "#lala",
+            data: {
+                msg: "魁拔魁拔魁拔魁拔魁拔魁拔",
+                img1: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590316696649&di=a1254b8dd6246b40472fe5bbe462f888&imgtype=0&src=http%3A%2F%2Fn1.itc.cn%2Fimg8%2Fwb%2Frecom%2F2016%2F05%2F13%2F146310949475222613.PNG',
+                img2: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590316723734&di=37182025dfaff0f3c3130bca7f991386&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201704%2F30%2F20170430183501_HUnPM.thumb.700_0.jpeg',
+                img3: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2668407130,935865240&fm=26&gp=0.jpg',
+                imgVal1: '蛮吉',
+                imgVal2: '镜心',
+                imgVal3: '海问香',
+                num: 1
+            },
+            methods: {
+                click: function () {
+                    this.$refs["p"].innerText = this["imgVal" + this.num];
+                    this.num < 3 ? this.num++ : this.num = 1;
+                },
+            }
+        })
+
+    </script>
+</body>
+
+</html>

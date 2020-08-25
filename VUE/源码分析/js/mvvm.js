@@ -26,6 +26,8 @@ MVVM.prototype = {
     },
 
     _proxyData: function(key, setter, getter) {
+        console.log(key);
+        
         var me = this;
         setter = setter || 
         Object.defineProperty(me, key, {
@@ -37,7 +39,7 @@ MVVM.prototype = {
             set: function proxySetter(newVal) {
                 me._data[key] = newVal;
             }
-        });
+        }); 
     },
 
     _initComputed: function() {
